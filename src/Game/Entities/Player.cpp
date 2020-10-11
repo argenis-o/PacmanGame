@@ -88,6 +88,7 @@ void Player::keyPressed(int key){
         case 'd':
             setFacing(RIGHT);
             break;
+        
     }
 }
 

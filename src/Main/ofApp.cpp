@@ -3,8 +3,13 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	
+	
+		
+
 	ofSetFrameRate(30);
-	ofSetWindowTitle("Java Game Box");
+	ofSetWindowTitle("PacMan"); //Can I change this?
+
 	//States
 	menuState = new MenuState();
 	gameState = new GameState();
@@ -17,21 +22,28 @@ void ofApp::update(){
 	if (currentState != nullptr){
 		currentState->tick();
 		if(currentState->hasFinished()){
-			if(currentState->getNextState() == "Menu"){
+			if(currentState->getNextState() == "Menu")
 				currentState = menuState;
 			}else if(currentState->getNextState() == "Game"){
+				PacManStartUp.load("PacManBeginning.mp3");
+				PacManStartUp.play();
 				currentState = gameState;
+
+				
+
 			}
 			currentState->reset();
 		}
 	}
 		
-}
+
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	if (currentState != nullptr)
 		currentState->render();
+		
+		
 }
 
 //--------------------------------------------------------------
