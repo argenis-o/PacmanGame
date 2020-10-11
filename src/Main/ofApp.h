@@ -3,6 +3,8 @@
 #include "ofMain.h"
 #include "MenuState.h"
 #include "GameState.h"
+#include "ofSoundPlayer.h"
+
 
 class ofApp : public ofBaseApp{
 
@@ -28,5 +30,23 @@ public:
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+		
+		/*void ofApp::playMusic(string word){
+			song.load(word);
+    		song.setVolume(0.6);
+    		song.setLoop(true);
+    		song.play();
+		}*/
+
+		ofSoundPlayer PacManStartUp;
+		ofSoundPlayer PacManDies;
+		ofSoundPlayer PacManEatsDots;
+		ofSoundPlayer PacManEatsFruit;
+		ofSoundPlayer PacManEatsGhosts;
+		ofSoundPlayer PacManExtraLife;
+		ofSoundPlayer PacManIntermission;
+
+		ofImage Background;
+
 		
 };
