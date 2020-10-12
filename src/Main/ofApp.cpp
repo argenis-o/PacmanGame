@@ -22,7 +22,7 @@ void ofApp::update(){
 	if (currentState != nullptr){
 		currentState->tick();
 		if(currentState->hasFinished()){
-			if(currentState->getNextState() == "Menu")
+			if(currentState->getNextState() == "Menu"){
 				currentState = menuState;
 			}else if(currentState->getNextState() == "Game"){
 				PacManStartUp.load("PacManBeginning.mp3");
@@ -35,6 +35,7 @@ void ofApp::update(){
 			currentState->reset();
 		}
 	}
+}
 		
 
 

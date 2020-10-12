@@ -71,7 +71,7 @@ void Player::render(){
         walkLeft->getCurrentFrame().draw(x, y, width, height);
     }else if(facing == RIGHT){
         walkRight->getCurrentFrame().draw(x, y, width, height);
-    }
+    }ofDrawBitmapString("Score: "+to_string(this->getScore()),  35, 35);
 }
 
 void Player::keyPressed(int key){
@@ -132,8 +132,13 @@ void Player::checkCollisions(){
     }
     for(Entity* entity:em->entities){
         if(collides(entity)){
-            if(dynamic_cast<Dot*>(entity) || dynamic_cast<BigDot*>(entity)){
+            if(dynamic_cast<Dot*>(entity)){
                 entity->remove = true;
+                score += 1;
+            }
+            else if(dynamic_cast<BigDot*>(entity)){
+                entity->remove = true;
+                score +=5;
             }
         }
     }

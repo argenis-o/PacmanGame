@@ -14,9 +14,9 @@ class Player: public Entity{
 
     private:
         int health;
-        int score;
+        int score = 0;
         bool canMove;
-        int speed = 8;
+        int speed = 4;
         bool walking = false;
         FACING facing = DOWN;
         ofImage up, down, left, right;
@@ -29,7 +29,7 @@ class Player: public Entity{
     public:
         Player(int, int, int , int, EntityManager*);
         int getHealth();
-        int getScore();
+        int getScore(){return score;};
         void tick();
         void render();
         void keyPressed(int);
