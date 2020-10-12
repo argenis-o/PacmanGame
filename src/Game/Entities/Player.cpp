@@ -39,6 +39,7 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
     this->em = em;
     
 }
+
 void Player::tick(){
     canMove = true;
     checkCollisions();
@@ -72,6 +73,12 @@ void Player::render(){
     }else if(facing == RIGHT){
         walkRight->getCurrentFrame().draw(x, y, width, height);
     }ofDrawBitmapString("Score: "+to_string(this->getScore()),  35, 35);
+    ofDrawBitmapString("Lives : "+to_string(health), 35, 45);
+    if (oneupScore == 225){
+        oneup();
+        oneupScore = 0;
+    }
+    
 }
 
 void Player::keyPressed(int key){
@@ -87,6 +94,12 @@ void Player::keyPressed(int key){
             break;
         case 'd':
             setFacing(RIGHT);
+            break;
+        case 'n':
+            die();
+            break;
+        case 'm':
+            oneup();
             break;
         
     }
@@ -135,12 +148,29 @@ void Player::checkCollisions(){
             if(dynamic_cast<Dot*>(entity)){
                 entity->remove = true;
                 score += 1;
+                oneupScore += 1;
             }
             else if(dynamic_cast<BigDot*>(entity)){
                 entity->remove = true;
                 score +=5;
+                oneupScore += 5;
             }
         }
     }
     
 }
+
+void Player::die(){
+    if(health == 0){
+        return;
+    }
+    health --;
+}
+
+void Player::oneup(){
+    if(health >=6){
+        return;
+    }
+    health ++;
+}
+

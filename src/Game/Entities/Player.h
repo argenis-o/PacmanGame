@@ -13,8 +13,9 @@ enum FACING {
 class Player: public Entity{
 
     private:
-        int health;
+        int health = 3;
         int score = 0;
+        int oneupScore = 0;
         bool canMove;
         int speed = 4;
         bool walking = false;
@@ -39,4 +40,15 @@ class Player: public Entity{
         void reset();
         void setFacing(FACING facing);
         void checkCollisions();
+
+        void StartingH();
+        void die();
+        void oneup();
+
+        bool BeginningHealth = true;
+        vector <int> lives;
+        int gapX = 10;
+
+    //ofImage amongusOrange;
+
 };
