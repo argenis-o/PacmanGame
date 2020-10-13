@@ -9,6 +9,8 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
     up.cropFrom(sprite, 0, 32, 16, 16);
     left.cropFrom(sprite, 0, 16, 16, 16);
     right.cropFrom(sprite, 0, 0, 16, 16);
+
+    livesIcon.load("images/deadbody_amongus.png");
     
     vector<ofImage> downAnimframes;
     vector<ofImage> upAnimframes;
@@ -72,8 +74,14 @@ void Player::render(){
         walkLeft->getCurrentFrame().draw(x, y, width, height);
     }else if(facing == RIGHT){
         walkRight->getCurrentFrame().draw(x, y, width, height);
-    }ofDrawBitmapString("Score: "+to_string(this->getScore()),  35, 35);
-    ofDrawBitmapString("Lives : "+to_string(health), 35, 45);
+    }ofDrawBitmapString("Score: "+to_string(this->getScore()),  0, 35);
+    ofDrawBitmapString("Lives : ", 0, 65);
+    gapX = 55;
+    for(int i=0;i < health; i++){
+        livesIcon.draw(gapX, 55, 20, 20);
+        gapX += 10;
+    }
+    
     if (oneupScore == 225){
         oneup();
         oneupScore = 0;

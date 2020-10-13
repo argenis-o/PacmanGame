@@ -47,8 +47,10 @@ class Player: public Entity{
 
         bool BeginningHealth = true;
         vector <int> lives;
-        int gapX = 10;
+        int gapX;
 
-    //ofImage amongusOrange;
+        
+        ofImage livesIcon;
+
 
 };
