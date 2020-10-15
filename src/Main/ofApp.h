@@ -31,20 +31,15 @@ public:
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-		/*void ofApp::playMusic(string word){
-			song.load(word);
-    		song.setVolume(0.6);
-    		song.setLoop(true);
-    		song.play();
-		}*/
+		
 
-		ofSoundPlayer PacManStartUp;
-		ofSoundPlayer PacManDies;
+		static ofSoundPlayer PacManStartUp;
+		static ofSoundPlayer PacManDies;
 		static ofSoundPlayer PacManEatsDots;
-		ofSoundPlayer PacManEatsFruit;
-		ofSoundPlayer PacManEatsGhosts;
-		ofSoundPlayer PacManExtraLife;
-		ofSoundPlayer PacManIntermission;
+		static ofSoundPlayer PacManEatsFruit;
+		static ofSoundPlayer PacManEatsGhosts;
+		static ofSoundPlayer PacManExtraLife;
+		static ofSoundPlayer PacManIntermission;
 
 		ofImage Background;
 

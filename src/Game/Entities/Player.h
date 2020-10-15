@@ -19,7 +19,7 @@ class Player: public Entity{
         int score = 0;
         int oneupScore = 0;
         bool canMove;
-        int speed = 4;
+        int speed = 2;
         bool walking = false;
         FACING facing = DOWN;
         ofImage up, down, left, right;
@@ -54,6 +54,7 @@ class Player: public Entity{
         
         ofImage livesIcon;
         ofSoundPlayer PacManEatsDots;
+        ofSoundPlayer PacManDies;
 
 
 };
