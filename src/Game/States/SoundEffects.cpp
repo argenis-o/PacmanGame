@@ -4,7 +4,7 @@
     ofSoundPlayer SoundEffect;
     SoundEffect.load(SoundPath);
     SoundEffect.setVolume(0.6);
-    //SoundEffect.play();
+    SoundEffect.play();
     return SoundEffect;
     
 }

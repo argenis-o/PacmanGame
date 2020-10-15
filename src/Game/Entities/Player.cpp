@@ -158,15 +158,17 @@ void Player::checkCollisions(){
         if(collides(entity)){
             if(dynamic_cast<Dot*>(entity)){
                 entity->remove = true;
-                SoundEffects::soundManager("/Users/sebastian.estrada/Desktop/CIIC4010/OpenFrameWork/apps/myApps/pa2-pakiman/bin/data/PacManSoundEffects/PacManEatsDots.mp3");
-                score += 10;
-                PacManEatsDots.load("/Users/sebastian.estrada/Desktop/CIIC4010/OpenFrameWork/apps/myApps/pa2-pakiman/bin/data/PacManSoundEffects/PacManEatsDots.mp3");
-                PacManEatsDots.play();                
+                PacManEatsDots = SoundEffects::soundManager("PacManSoundEffects/PacManEatsDots2.mp3");
+                //if(!PacManEatsDots.isPlaying()){
+                    //PacManEatsDots = SoundEffects::soundManager("PacManSoundEffects/PacManEatsDots2.mp3");
+                //}
+                score += 10;                
                 oneupScore += 1;
 
             }
             else if(dynamic_cast<BigDot*>(entity)){
                 entity->remove = true;
+                PacManEatsDots = SoundEffects::soundManager("PacManSoundEffects/PacManEatsDots2.mp3");
                 score +=50;
                 oneupScore += 5;
             }
@@ -178,6 +180,8 @@ void Player::checkCollisions(){
 void Player::die(){
     if(health == 0){
         
+        PacManDies = SoundEffects::soundManager("PacManSoundEffects/PacManDies.mp3");
+        PacManDies.play();
         
         return;
     }

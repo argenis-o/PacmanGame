@@ -35,6 +35,7 @@ void Button::mousePressed(int x, int y){
 
 void Button::render(){
     ofSetColor(255,255,255);
+    //ofSetColor(1,9,232);
     ofDrawBitmapString(buttonText, xPos+width/2, yPos+height/2);
 }
 

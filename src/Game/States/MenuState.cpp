@@ -1,12 +1,21 @@
 #include "MenuState.h"
+#include "ofApp.h"
+#include "ofSoundPlayer.h"
+
+
 
 MenuState::MenuState() {
-	//startButton = new Button(ofGetWidth()/2-300, ofGetHeight()/2 - 200, 800, 800, "START");
-	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 100, 100 , "START");
+	//startButton = new Button(ofGetWidth()/2-300, ofGetHeight()/2 - 200, 1000, 1000, "START");
+	//startButton = new Button(ofGetWidth()/2 -300, ofGetHeight()/2-300, ofGetWidth()-300, ofGetHeight()-400 , "START");
+	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, ofGetWidth()-600, ofGetHeight()-600, "START");
 }
 void MenuState::tick() {
 	startButton->tick();
 	if(startButton->wasPressed()){
+		//SoundEffects::soundManager("PacManSoundEffects/PacManBeginning.mp3");
+		//ofApp::PacManStartUp = SoundEffects::soundManager("PacManSoundEffects/PacManBeginning.mp3");
+		PacManStartUp = SoundEffects::soundManager("PacManSoundEffects/PacManBeginning.mp3");
+		//PacManStartUp.play();
 		setNextState("Game");
 		setFinished(true);
 
@@ -14,11 +23,9 @@ void MenuState::tick() {
 }
 void MenuState::render() {
 	ofImage background = getImage();
-	//background.load("/Users/sebastian.estrada/Desktop/CIIC4010/OpenFrameWork/apps/myApps/pa2-pakiman/bin/data/images/intro.png");
 	background.load("images/intro.png");
 	background.draw(0,0,ofGetWidth(),ofGetHeight());
 	startButton->render();
-	//background.draw(0,0);
 	ofSetBackgroundColor(0, 0, 0);
 	
 }
