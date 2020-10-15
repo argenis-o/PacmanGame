@@ -2,6 +2,8 @@
 #include "Animation.h"
 
 #include "EntityManager.h"
+#include "ofSoundPlayer.h"
+#include "SoundEffects.h"
 
 enum FACING {
     UP,
@@ -51,6 +53,7 @@ class Player: public Entity{
 
         
         ofImage livesIcon;
+        ofSoundPlayer PacManEatsDots;
 
 
 };

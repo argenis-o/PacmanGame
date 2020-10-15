@@ -40,7 +40,7 @@ public:
 
 		ofSoundPlayer PacManStartUp;
 		ofSoundPlayer PacManDies;
-		ofSoundPlayer PacManEatsDots;
+		static ofSoundPlayer PacManEatsDots;
 		ofSoundPlayer PacManEatsFruit;
 		ofSoundPlayer PacManEatsGhosts;
 		ofSoundPlayer PacManExtraLife;

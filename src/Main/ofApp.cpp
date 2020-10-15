@@ -25,8 +25,9 @@ void ofApp::update(){
 			if(currentState->getNextState() == "Menu"){
 				currentState = menuState;
 			}else if(currentState->getNextState() == "Game"){
-				PacManStartUp.load("PacManBeginning.mp3");
-				PacManStartUp.play();
+				//PacManStartUp.load("PacManBeginning.mp3");
+				//PacManStartUp.play();
+				SoundEffects::soundManager("PacManBeginning.mp3");
 				currentState = gameState;
 
 				

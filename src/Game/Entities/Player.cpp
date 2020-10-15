@@ -2,6 +2,9 @@
 #include "EntityManager.h"
 #include "Dot.h"
 #include "BigDot.h"
+#include "SoundEffects.h"
+
+
 
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
     sprite.load("images/pacman.png");
@@ -155,12 +158,16 @@ void Player::checkCollisions(){
         if(collides(entity)){
             if(dynamic_cast<Dot*>(entity)){
                 entity->remove = true;
-                score += 1;
+                SoundEffects::soundManager("/Users/sebastian.estrada/Desktop/CIIC4010/OpenFrameWork/apps/myApps/pa2-pakiman/bin/data/PacManSoundEffects/PacManEatsDots.mp3");
+                score += 10;
+                PacManEatsDots.load("/Users/sebastian.estrada/Desktop/CIIC4010/OpenFrameWork/apps/myApps/pa2-pakiman/bin/data/PacManSoundEffects/PacManEatsDots.mp3");
+                PacManEatsDots.play();                
                 oneupScore += 1;
+
             }
             else if(dynamic_cast<BigDot*>(entity)){
                 entity->remove = true;
-                score +=5;
+                score +=50;
                 oneupScore += 5;
             }
         }
@@ -170,6 +177,8 @@ void Player::checkCollisions(){
 
 void Player::die(){
     if(health == 0){
+        
+        
         return;
     }
     health --;
