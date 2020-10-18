@@ -56,6 +56,7 @@ class Player: public Entity{
 
         
         ofImage livesIcon;
+        ofImage Ghost;
         ofSoundPlayer PacManEatsDots;
         ofSoundPlayer PacManDies;
 

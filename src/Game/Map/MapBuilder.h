@@ -4,11 +4,13 @@
 #include "Dot.h"
 #include "BigDot.h"
 #include "Ghost.h"
+#include "GhostSpawner.h"
 
 class MapBuilder {
     public:
         MapBuilder();
 	    Map* createMap(ofImage);
+        int xCount=0;
 
 	private:
         vector<ofImage> bound;
@@ -22,4 +24,5 @@ class MapBuilder {
         ofImage tempBound;
         ofImage getSprite(ofImage, int, int);
         EntityManager* entityManager;
+        
 };

@@ -4,6 +4,7 @@
 #include "BigDot.h"
 #include "SoundEffects.h"
 #include "Ghost.h"
+#include "GhostSpawner.h"
 
 
 
@@ -173,7 +174,7 @@ void Player::checkCollisions(){
                 oneupScore += 5;
             }
 
-            else if(dynamic_cast<Ghost*>(entity)){
+            else if(dynamic_cast<GhostSpawner*>(entity)){
 
                 die();
                 //this->remove = true;
