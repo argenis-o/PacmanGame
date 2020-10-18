@@ -3,11 +3,14 @@
 #include "Dot.h"
 #include "BigDot.h"
 #include "SoundEffects.h"
+#include "Ghost.h"
 
 
 
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
     sprite.load("images/pacman.png");
+    spawnX = this->x;
+    spawnY = this->y;
     down.cropFrom(sprite, 0, 48, 16, 16);
     up.cropFrom(sprite, 0, 32, 16, 16);
     left.cropFrom(sprite, 0, 16, 16, 16);
@@ -159,9 +162,6 @@ void Player::checkCollisions(){
             if(dynamic_cast<Dot*>(entity)){
                 entity->remove = true;
                 PacManEatsDots = SoundEffects::soundManager("PacManSoundEffects/PacManEatsDots2.mp3");
-                //if(!PacManEatsDots.isPlaying()){
-                    //PacManEatsDots = SoundEffects::soundManager("PacManSoundEffects/PacManEatsDots2.mp3");
-                //}
                 score += 10;                
                 oneupScore += 1;
 
@@ -172,6 +172,15 @@ void Player::checkCollisions(){
                 score +=50;
                 oneupScore += 5;
             }
+
+            else if(dynamic_cast<Ghost*>(entity)){
+
+                die();
+                //this->remove = true;
+                //this->setCoordX();
+                //this->setCoordY();
+
+            }
         }
     }
     
@@ -181,10 +190,15 @@ void Player::die(){
     if(health == 0){
         
         PacManDies = SoundEffects::soundManager("PacManSoundEffects/PacManDies.mp3");
-        PacManDies.play();
+        
         
         return;
     }
+    
+    PacManDies = SoundEffects::soundManager("PacManSoundEffects/PacManDies.mp3");
+    this->remove = true;
+    this->setCoordX();
+    this->setCoordY();
     health --;
 }
 

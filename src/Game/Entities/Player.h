@@ -28,6 +28,7 @@ class Player: public Entity{
         Animation *walkLeft;
         Animation *walkRight;
         EntityManager* em;
+        int spawnX, spawnY;
 
     public:
         Player(int, int, int , int, EntityManager*);
@@ -46,6 +47,8 @@ class Player: public Entity{
         void StartingH();
         void die();
         void oneup();
+        void setCoordX(){this->x = spawnX;};
+        void setCoordY(){this->y = spawnY;};
 
         bool BeginningHealth = true;
         vector <int> lives;
