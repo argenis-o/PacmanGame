@@ -13,6 +13,7 @@ void ofApp::setup(){
 	//States
 	menuState = new MenuState();
 	gameState = new GameState();
+	gameoverState = new GameOverState();
 	// Initial State
 	currentState = menuState;
 }
@@ -22,13 +23,16 @@ void ofApp::update(){
 	if (currentState != nullptr){
 		currentState->tick();
 		if(currentState->hasFinished()){
+			ofLog() << currentState->getNextState();
 			if(currentState->getNextState() == "Menu"){
 				currentState = menuState;
 			}else if(currentState->getNextState() == "Game"){
 				currentState = gameState;
 
 				
-
+			}
+			else if(currentState->getNextState() == "Replay" ){
+		 	currentState = gameoverState;
 			}
 			currentState->reset();
 		}
