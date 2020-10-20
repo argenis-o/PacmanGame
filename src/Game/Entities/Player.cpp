@@ -10,6 +10,8 @@
 
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
     sprite.load("images/pacman.png");
+    setSpeed(0);
+    //canMove = false;
     spawnX = this->x;
     spawnY = this->y;
     down.cropFrom(sprite, 0, 48, 16, 16);
@@ -81,7 +83,9 @@ void Player::render(){
         walkLeft->getCurrentFrame().draw(x, y, width, height);
     }else if(facing == RIGHT){
         walkRight->getCurrentFrame().draw(x, y, width, height);
-    }ofDrawBitmapString("Score: "+to_string(this->getScore()),  0, 35);
+    }
+    
+    ofDrawBitmapString("Score: "+to_string(this->getScore()),  0, 35);
     ofDrawBitmapString("Lives : ", 0, 65);
     gapX = 55;
     for(int i=0;i < health; i++){
@@ -100,15 +104,23 @@ void Player::keyPressed(int key){
     switch(key){
         case 'w':
             setFacing(UP);
+            setSpeed(2);
+            //canMove = true;
             break;
         case 's':
             setFacing(DOWN);
+            setSpeed(2);
+            //canMove = true;
             break;
         case 'a':
             setFacing(LEFT);
+            //canMove = true;
+            setSpeed(2);
             break;
         case 'd':
             setFacing(RIGHT);
+            //canMove = true;
+            setSpeed(2);
             break;
         case 'n':
             die();
@@ -122,7 +134,8 @@ void Player::keyPressed(int key){
 
 void Player::keyReleased(int key){
     if(key == 'w' || key =='s' || key == 'a' || key == 'd'){
-        walking = false;
+        setSpeed(0);
+        //canMove = false;
     }
 }
 void Player::mousePressed(int x, int y, int button){
@@ -174,12 +187,10 @@ void Player::checkCollisions(){
                 oneupScore += 5;
             }
 
-            else if(dynamic_cast<GhostSpawner*>(entity)){
+            else if(dynamic_cast<Ghost*>(entity)){
 
                 die();
-                //this->remove = true;
-                //this->setCoordX();
-                //this->setCoordY();
+                
 
             }
         }
@@ -209,4 +220,12 @@ void Player::oneup(){
     }
     health ++;
 }
+
+
+
+
+
+
+
+
 

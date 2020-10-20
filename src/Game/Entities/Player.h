@@ -19,7 +19,7 @@ class Player: public Entity{
         int score = 0;
         int oneupScore = 0;
         bool canMove;
-        int speed = 2;
+        int speed;
         bool walking = false;
         FACING facing = DOWN;
         ofImage up, down, left, right;
@@ -49,6 +49,7 @@ class Player: public Entity{
         void oneup();
         void setCoordX(){this->x = spawnX;};
         void setCoordY(){this->y = spawnY;};
+        void setSpeed(int speed){this->speed = speed;};
 
         bool BeginningHealth = true;
         vector <int> lives;
@@ -56,7 +57,7 @@ class Player: public Entity{
 
         
         ofImage livesIcon;
-        ofImage Ghost;
+        ofImage ghost;
         ofSoundPlayer PacManEatsDots;
         ofSoundPlayer PacManDies;
 
