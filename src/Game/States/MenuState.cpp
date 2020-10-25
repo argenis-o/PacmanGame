@@ -16,7 +16,7 @@ void MenuState::tick() {
 		//ofApp::PacManStartUp = SoundEffects::soundManager("PacManSoundEffects/PacManBeginning.mp3");
 		PacManStartUp = SoundEffects::soundManager("PacManSoundEffects/PacManBeginning.mp3");
 		//PacManStartUp.play();
-		setNextState("Replay");
+		setNextState("Game");
 		setFinished(true);
 
 	}

@@ -18,6 +18,7 @@ void Map::render(){
 
 void Map::keyPressed(int key){
 	player->keyPressed(key);
+
 }
 
 void Map::mousePressed(int x, int y, int button){
@@ -35,5 +36,21 @@ void Map::addEntity(Entity* e){
 }
 void Map::setPlayer(Player* p){
     player = p;
+}
+
+
+int Map::getHealth(){
+	return player->getHealth();
+}
+
+void Map::setHealth(){
+	player->setHealth(3);
+}
+
+void Map::EntityReset(){
+	entityManager->entities.clear();
+}
+
+void Map::ResetMap(){
 }
 

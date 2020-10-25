@@ -32,7 +32,7 @@ class Player: public Entity{
 
     public:
         Player(int, int, int , int, EntityManager*);
-        int getHealth();
+        int getHealth(){return health;};
         int getScore(){return score;};
         void tick();
         void render();
@@ -51,9 +51,13 @@ class Player: public Entity{
         void setCoordY(){this->y = spawnY;};
         void setSpeed(int speed){this->speed = speed;};
 
+        void ResetPlayer();
+
         bool BeginningHealth = true;
         vector <int> lives;
         int gapX;
+        
+        void setHealth(int h){this->health = h;};
 
         
         ofImage livesIcon;

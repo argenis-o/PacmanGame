@@ -13,6 +13,15 @@ class Map{
 		  void mousePressed(int x, int y, int button);
 		  void keyReleased(int key);
 
+      
+      int getHealth();
+
+      void setHealth();
+
+      void EntityReset();
+
+      void ResetMap();
+
     private:
       EntityManager *entityManager;
       Player *player;

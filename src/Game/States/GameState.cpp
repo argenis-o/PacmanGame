@@ -3,10 +3,18 @@
 
 GameState::GameState() {
 	mapImage.load("images/map1.png");
-	map = MapBuilder().createMap(mapImage);
+	map = MapBuilder().createMap(mapImage);   //generates a new map.
 }
 void GameState::tick() {
 	map->tick();
+	if(map->getHealth() == 0){
+		setNextState("Replay");
+		setFinished(true);
+		map->setHealth();
+		map = MapBuilder().createMap(mapImage);
+
+		// newgame->createMap(mapImage);
+	}
 }
 void GameState::render() {
 	map->render();

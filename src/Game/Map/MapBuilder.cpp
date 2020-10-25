@@ -50,6 +50,7 @@ Map* MapBuilder::createMap(ofImage mapImage){
 
 	ofPixels pixels = mapImage.getPixels();
 	Map* mapInCreation =  new Map(entityManager);
+	mapInCreation->EntityReset();
     for (int i = 0; i < mapImage.getWidth(); i++) {
         for (int j = 0; j < mapImage.getHeight(); j++) {
             ofColor currentPixel = pixels.getColor(i, j);
