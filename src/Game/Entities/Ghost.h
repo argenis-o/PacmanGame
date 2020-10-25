@@ -12,7 +12,7 @@ enum GHOSTFACING {
 
 class Ghost: public Entity{
     private:
-        GHOSTFACING facing = GHOSTRIGHT;
+        GHOSTFACING facing = GHOSTUP;
         bool canMove;
         ofImage up, down, left, right;
         Animation *walkUp;
@@ -21,6 +21,8 @@ class Ghost: public Entity{
         Animation *walkRight;
         EntityManager* em;
         int speed = 4;
+        bool isEatable;
+        bool isDead;
         
         
     
@@ -30,6 +32,7 @@ class Ghost: public Entity{
         void render();
         void setFacing(GHOSTFACING facing);
         void checkGhostCollisions();
+        int randomDir;
         
 
 

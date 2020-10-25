@@ -17,7 +17,7 @@ class GameState: public State{
 	private:
 		ofImage mapImage;
 		Map* map;
-		MapBuilder* newgame;
+		//MapBuilder* newgame;
 
 
 };

@@ -9,7 +9,7 @@
 class MapBuilder {
     public:
         MapBuilder();
-	    Map* createMap(ofImage);
+	Map* createMap(ofImage);
         int xCount=0;
 
 	private:
@@ -18,8 +18,8 @@ class MapBuilder {
         ofColor boundBlock;
         ofColor pacman;
         ofColor ghostC;
-	    ofColor dotC;
-	    ofColor bigDotC;
+	ofColor dotC;
+	ofColor bigDotC;
         ofImage pacmanSpriteSheet;
         ofImage tempBound;
         ofImage getSprite(ofImage, int, int);
