@@ -1,31 +1,27 @@
 #include "GhostSpawner.h"
+#include "Ghost.h"
+#include "Map.h"
+#include "MapBuilder.h"
+#include "EntityManager.h"
+#include "Entity.h"
 
-GhostSpawner::GhostSpawner(int x, int y, int width, int height, ofImage spriteSheet): Entity(x, y, width, height){
-    if(count > 3){
-        count = 0;
-    }
-    //count++;
-    if(count == 0){
-      sprite.cropFrom(spriteSheet,456,64,16,16);
-    }
-    else if(count == 1){
-        sprite.cropFrom(spriteSheet,456,80,16,16);
-        //count++;
-    }
-    else if(count == 2){
-        sprite.cropFrom(spriteSheet,456,96,16,16);
-        //count++;
-    }
-    else if(count == 3){
-        sprite.cropFrom(spriteSheet,456,112,16,16);
-        //count++;
-    }
+
+
+GhostSpawner::GhostSpawner(int x, int y, int width, int height, ofImage spriteSheet,EntityManager* entityManager): Entity(x, y, width, height){
+    
+    Ghost* ghost1 = new Ghost(x,y,width,height,spriteSheet,entityManager);
+	entityManager->entities.push_back(ghost1);
+
+    Ghost* ghost2 = new Ghost(x+5,y,width,height,spriteSheet,entityManager);
+	entityManager->entities.push_back(ghost2);
+
+    Ghost* ghost3 = new Ghost(x+10,y,width,height,spriteSheet,entityManager);
+    entityManager->entities.push_back(ghost3);
+
+    Ghost* ghost4 = new Ghost(x-5,y,width,height,spriteSheet,entityManager);
+	entityManager->entities.push_back(ghost4);
+    		
+                    
+
 
 }
-
-// void GhostSpawner::sumCount(){
-//     count += 1;
-//     if(count == 4){
-//         count = 0;
-//     }
-// }

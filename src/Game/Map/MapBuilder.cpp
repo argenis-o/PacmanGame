@@ -63,13 +63,7 @@ Map* MapBuilder::createMap(ofImage mapImage){
                 Player* PacMan = new Player(xPos,yPos,pixelMultiplier,pixelMultiplier, entityManager);
 				mapInCreation->setPlayer(PacMan);
             }else if(currentPixel == ghostC){
-				for(int i = 0; i<4; i++){
-					Ghost* ghost = new Ghost(xPos,yPos,pixelMultiplier,pixelMultiplier,pacmanSpriteSheet,entityManager);
-					mapInCreation->addEntity(ghost);
-					xPos += 5;
-					xCount = 0;
-				}
-				GhostSpawner* ghost = new GhostSpawner(xPos,yPos,pixelMultiplier,pixelMultiplier,pacmanSpriteSheet);
+				GhostSpawner* ghost = new GhostSpawner(xPos,yPos,pixelMultiplier,pixelMultiplier,pacmanSpriteSheet,entityManager);
 					mapInCreation->addEntity(ghost);
 
             }

@@ -2,6 +2,7 @@
 #include "EntityManager.h"
 
 
+
 Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityManager *em): Entity(x, y, width, height){
     sprite.load("images/background.png");
     //sprite.cropFrom(spriteSheet,456,64,16,16);
@@ -50,15 +51,38 @@ void Ghost::tick(){  //Basic Idea
     checkGhostCollisions();
     if(canMove){
         if(facing == GHOSTUP){
+            checkGhostCollisions();
+            if(!canMove){
+                randomDir = ofRandom(0,3);
+                switch(randomDir){
+                    case 0:
+                        setFacing(GHOSTRIGHT);
+                        break;
+                    case 1:
+                        setFacing(GHOSTDOWN);
+                        break;
+                    case 2:
+                        setFacing(GHOSTLEFT);
+                        break;
+                }
+
+             }
             y-= speed;
             walkUp->tick();
-        }else if(facing == GHOSTDOWN){
+        }
+        
+        else if(facing == GHOSTDOWN){
             y+=speed;
             walkDown->tick();
-        }else if(facing == GHOSTLEFT){
+        }
+        
+        else if(facing == GHOSTLEFT){
             x-=speed;
             walkLeft->tick();
-        }else if(facing == GHOSTRIGHT){
+        }
+        
+        
+        else if(facing == GHOSTRIGHT){
             x+=speed;
             walkRight->tick();
         }
