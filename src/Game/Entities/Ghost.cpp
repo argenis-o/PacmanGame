@@ -3,14 +3,48 @@
 
 
 
-Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityManager *em): Entity(x, y, width, height){
+Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityManager *em, GHOSTNAMES name): Entity(x, y, width, height){
     sprite.load("images/background.png");
     //sprite.cropFrom(spriteSheet,456,64,16,16);
-    down.cropFrom(sprite, 552, 64, 16, 16);
+    this->name = name;
+    switch(name){
+        case Blinky:
+            down.cropFrom(sprite, 552, 64, 16, 16);
+            up.cropFrom(sprite, 520, 64, 16, 16);
+            left.cropFrom(sprite, 456, 64, 16, 16);
+            right.cropFrom(sprite, 488, 64, 16, 16);
+            break;
+            
+        
+        case Pinky:
+            down.cropFrom(sprite, 552, 80, 16, 16);
+            up.cropFrom(sprite, 520, 80, 16, 16);
+            left.cropFrom(sprite, 456, 80, 16, 16);
+            right.cropFrom(sprite, 488, 80, 16, 16);
+            break;
+
+        case Clyde:
+            down.cropFrom(sprite, 552, 96, 16, 16);
+            up.cropFrom(sprite, 520, 96, 16, 16);
+            left.cropFrom(sprite, 456, 96, 16, 16);
+            right.cropFrom(sprite, 488, 96, 16, 16);
+            break;
+            
+
+        case Inky:
+            down.cropFrom(sprite, 552, 112, 16, 16);
+            up.cropFrom(sprite, 520, 112, 16, 16);
+            left.cropFrom(sprite, 456, 112, 16, 16);
+            right.cropFrom(sprite, 488, 112, 16, 16);
+            break;
+            
+    }
+    
+    /*down.cropFrom(sprite, 552, 64, 16, 16);
     up.cropFrom(sprite, 520, 64, 16, 16);
     left.cropFrom(sprite, 456, 64, 16, 16);
     right.cropFrom(sprite, 488, 64, 16, 16);
-    setFacing(GHOSTUP);
+    setFacing(GHOSTUP);*/
 
    
     vector<ofImage> downAnimframes;
@@ -20,19 +54,19 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
     ofImage temp;
     for(int i=0; i<3; i++){
         temp.cropFrom(sprite, 552, 64, 16, 16);
-        downAnimframes.push_back(temp);
+        downAnimframes.push_back(down);
     }
     for(int i=0; i<3; i++){
         temp.cropFrom(sprite, 520, 64, 16, 16);
-        upAnimframes.push_back(temp);
+        upAnimframes.push_back(up);
     }
     for(int i=0; i<3; i++){
         temp.cropFrom(sprite, 456, 64, 16, 16);
-        leftAnimframes.push_back(temp);
+        leftAnimframes.push_back(left);
     }
     for(int i=0; i<3; i++){
         temp.cropFrom(sprite, 488, 64, 16, 16);
-        rightAnimframes.push_back(temp);
+        rightAnimframes.push_back(right);
     }
     walkDown = new Animation(1,downAnimframes);
     walkUp = new Animation(1,upAnimframes);
@@ -46,27 +80,14 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
 
 
 
-void Ghost::tick(){  //Basic Idea
+
+
+
+void Ghost::tick(){
     canMove = true;
     checkGhostCollisions();
     if(canMove){
         if(facing == GHOSTUP){
-            checkGhostCollisions();
-            if(!canMove){
-                randomDir = ofRandom(0,3);
-                switch(randomDir){
-                    case 0:
-                        setFacing(GHOSTRIGHT);
-                        break;
-                    case 1:
-                        setFacing(GHOSTDOWN);
-                        break;
-                    case 2:
-                        setFacing(GHOSTLEFT);
-                        break;
-                }
-
-             }
             y-= speed;
             walkUp->tick();
         }
@@ -81,15 +102,86 @@ void Ghost::tick(){  //Basic Idea
             walkLeft->tick();
         }
         
-        
         else if(facing == GHOSTRIGHT){
             x+=speed;
             walkRight->tick();
         }
     }
 
-   
-}  
+    else{
+        if(facing == GHOSTUP){
+            randomDir = ofRandom(0,3);
+            switch(randomDir){
+                case 0:
+                    setFacing(GHOSTRIGHT);
+                    break;
+                case 1:
+                    setFacing(GHOSTLEFT);
+                    break;
+                case 2:
+                    setFacing(GHOSTUP);
+                    break;
+            }
+
+        }
+
+        else if(facing == GHOSTDOWN){
+            randomDir = ofRandom(0,3);
+            switch(randomDir){
+                case 0:
+                    setFacing(GHOSTRIGHT);
+                    break;
+                case 1:
+                    setFacing(GHOSTLEFT);
+                    break;
+                case 2:
+                    setFacing(GHOSTUP);
+                    break;
+            }
+
+        }
+
+        else if(facing == GHOSTRIGHT){
+            randomDir = ofRandom(0,3);
+            switch(randomDir){
+                case 0:
+                    setFacing(GHOSTDOWN);
+                    break;
+                case 1:
+                    setFacing(GHOSTLEFT);
+                    break;
+                case 2:
+                    setFacing(GHOSTUP);
+                    break;
+            }
+
+        }
+
+
+            else if(facing == GHOSTLEFT){
+            randomDir = ofRandom(0,3);
+            switch(randomDir){
+                case 0:
+                    setFacing(GHOSTDOWN);
+                    break;
+                case 1:
+                    setFacing(GHOSTRIGHT);
+                    break;
+                case 2:
+                    setFacing(GHOSTUP);
+                    break;
+            }
+
+        }
+
+    }
+
+
+}
+
+
+
+
 
 
 void Ghost::render(){

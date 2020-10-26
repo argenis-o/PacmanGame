@@ -58,13 +58,19 @@ void Player::tick(){
         if(facing == UP){
             y-= speed;
             walkUp->tick();
-        }else if(facing == DOWN){
+        }
+        
+        else if(facing == DOWN){
             y+=speed;
             walkDown->tick();
-        }else if(facing == LEFT){
+        }
+        
+        else if(facing == LEFT){
             x-=speed;
             walkLeft->tick();
-        }else if(facing == RIGHT){
+        }
+        
+        else if(facing == RIGHT){
             x+=speed;
             walkRight->tick();
         }
@@ -87,6 +93,7 @@ void Player::render(){
     
     ofDrawBitmapString("Score: "+to_string(this->getScore()),  0, 35);
     ofDrawBitmapString("Lives : ", 0, 65);
+    ofDrawBitmapString("High Score: " + to_string(this->getHighScore()),0,95);
     gapX = 55;
     for(int i=0;i < health; i++){
         livesIcon.draw(gapX, 55, 20, 20);
@@ -171,6 +178,8 @@ void Player::checkCollisions(){
                 break;
         }
     }
+    
+    
     for(Entity* entity:em->entities){
         if(collides(entity)){
             if(dynamic_cast<Dot*>(entity)){
@@ -212,6 +221,9 @@ void Player::die(){
     this->setCoordX();
     this->setCoordY();
     health --;
+    if(score > highScore && health == 0){
+        highScore = score;
+    }
 }
 
 void Player::oneup(){

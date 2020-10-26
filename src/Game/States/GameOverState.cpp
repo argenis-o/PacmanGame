@@ -1,4 +1,5 @@
 #include "GameOverState.h"
+#include "Player.h"
 
 GameOverState::GameOverState(){
     replayButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 20, "REPLAY");
@@ -28,6 +29,7 @@ void GameOverState::mousePressed(int x, int y, int button){
 }
 
 void GameOverState::reset(){
+	
 	setFinished(false);
 	setNextState("");
 	replayButton->reset();

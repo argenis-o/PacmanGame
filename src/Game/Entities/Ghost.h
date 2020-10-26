@@ -10,9 +10,18 @@ enum GHOSTFACING {
 };
 
 
+enum GHOSTNAMES{
+    Pinky,
+    Blinky,
+    Inky,
+    Clyde
+};
+
+
 class Ghost: public Entity{
     private:
         GHOSTFACING facing = GHOSTUP;
+        GHOSTNAMES name;
         bool canMove;
         ofImage up, down, left, right;
         Animation *walkUp;
@@ -27,10 +36,11 @@ class Ghost: public Entity{
         
     
     public:
-        Ghost(int, int, int, int, ofImage, EntityManager*);
+        Ghost(int, int, int, int, ofImage, EntityManager*, GHOSTNAMES);
         void tick();
         void render();
         void setFacing(GHOSTFACING facing);
+        void setName(GHOSTNAMES name);
         void checkGhostCollisions();
         int randomDir;
         

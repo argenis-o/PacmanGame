@@ -15,8 +15,10 @@ enum FACING {
 class Player: public Entity{
 
     private:
+    
         int health = 3;
         int score = 0;
+        int highScore = 0;
         int oneupScore = 0;
         bool canMove;
         int speed;
@@ -50,6 +52,7 @@ class Player: public Entity{
         void setCoordX(){this->x = spawnX;};
         void setCoordY(){this->y = spawnY;};
         void setSpeed(int speed){this->speed = speed;};
+        int getHighScore(){return highScore;}
 
         void ResetPlayer();
 

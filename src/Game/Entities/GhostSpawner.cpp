@@ -9,17 +9,17 @@
 
 GhostSpawner::GhostSpawner(int x, int y, int width, int height, ofImage spriteSheet,EntityManager* entityManager): Entity(x, y, width, height){
     
-    Ghost* ghost1 = new Ghost(x,y,width,height,spriteSheet,entityManager);
-	entityManager->entities.push_back(ghost1);
+    Ghost* blinky = new Ghost(x,y,width,height,spriteSheet,entityManager,Blinky);
+	entityManager->entities.push_back(blinky);
 
-    Ghost* ghost2 = new Ghost(x+5,y,width,height,spriteSheet,entityManager);
-	entityManager->entities.push_back(ghost2);
+    Ghost* pinky = new Ghost(x,y,width,height,spriteSheet,entityManager,Pinky);
+	entityManager->entities.push_back(pinky);
 
-    Ghost* ghost3 = new Ghost(x+10,y,width,height,spriteSheet,entityManager);
-    entityManager->entities.push_back(ghost3);
+    Ghost* inky = new Ghost(x,y,width,height,spriteSheet,entityManager,Inky);
+    entityManager->entities.push_back(inky);
 
-    Ghost* ghost4 = new Ghost(x-5,y,width,height,spriteSheet,entityManager);
-	entityManager->entities.push_back(ghost4);
+    Ghost* clyde = new Ghost(x,y,width,height,spriteSheet,entityManager,Clyde);
+	entityManager->entities.push_back(clyde);
     		
                     
 

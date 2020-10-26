@@ -3,6 +3,7 @@
 #include "State.h"
 #include "Button.h"
 
+
 class GameOverState : public State {
 private:
 	ofImage YouDied;
