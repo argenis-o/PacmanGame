@@ -67,6 +67,7 @@ class Player: public Entity{
         ofImage ghost;
         ofSoundPlayer PacManEatsDots;
         ofSoundPlayer PacManDies;
-
+        ofSoundPlayer PacManEatsBigDot;
+        ofSoundPlayer PacManOneUp;
 
 };

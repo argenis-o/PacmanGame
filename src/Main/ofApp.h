@@ -33,13 +33,7 @@ public:
 		
 		
 
-		static ofSoundPlayer PacManStartUp;
-		static ofSoundPlayer PacManDies;
-		static ofSoundPlayer PacManEatsDots;
-		static ofSoundPlayer PacManEatsFruit;
-		static ofSoundPlayer PacManEatsGhosts;
-		static ofSoundPlayer PacManExtraLife;
-		static ofSoundPlayer PacManIntermission;
+		
 
 		ofImage Background;
 

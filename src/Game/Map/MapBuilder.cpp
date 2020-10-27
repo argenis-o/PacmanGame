@@ -59,10 +59,14 @@ Map* MapBuilder::createMap(ofImage mapImage){
             if(currentPixel == boundBlock){
                 BlockEntity* BoundBlock = new BlockEntity(xPos,yPos,pixelMultiplier,pixelMultiplier,getSprite(mapImage,i,j));
                 mapInCreation->addBlockEntity(BoundBlock);
-            }else if(currentPixel == pacman){
+            }
+			
+			else if(currentPixel == pacman){
                 Player* PacMan = new Player(xPos,yPos,pixelMultiplier,pixelMultiplier, entityManager);
 				mapInCreation->setPlayer(PacMan);
-            }else if(currentPixel == ghostC){
+            }
+			
+			else if(currentPixel == ghostC){
 				GhostSpawner* ghost = new GhostSpawner(xPos,yPos,pixelMultiplier,pixelMultiplier,pacmanSpriteSheet,entityManager);
 					mapInCreation->addEntity(ghost);
 
@@ -71,10 +75,14 @@ Map* MapBuilder::createMap(ofImage mapImage){
 			else if(currentPixel == dotC){
                 Dot* dot = new Dot(xPos,yPos,pixelMultiplier,pixelMultiplier, pacmanSpriteSheet);
                 mapInCreation->addEntity(dot);
-            }else if(currentPixel == bigDotC){
+            }
+			
+			else if(currentPixel == bigDotC){
                 BigDot* bigDot = new BigDot(xPos,yPos,pixelMultiplier,pixelMultiplier, pacmanSpriteSheet);
                 mapInCreation->addEntity(bigDot);
             }
+
+			
         }
 
     }

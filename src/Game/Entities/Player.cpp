@@ -192,6 +192,7 @@ void Player::checkCollisions(){
             else if(dynamic_cast<BigDot*>(entity)){
                 entity->remove = true;
                 PacManEatsDots = SoundEffects::soundManager("PacManSoundEffects/PacManEatsDots2.mp3");
+                PacManEatsBigDot = SoundEffects::soundManager("PacManSoundEffects/PacManGhostsVulnerable.mp3");
                 score +=50;
                 oneupScore += 5;
             }
@@ -231,6 +232,7 @@ void Player::oneup(){
         return;
     }
     health ++;
+    PacManOneUp = SoundEffects::soundManager("PacManSoundEffects/PacManExtraLife.mp3");
 }
 
 
