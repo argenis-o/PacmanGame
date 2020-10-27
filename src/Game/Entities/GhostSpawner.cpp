@@ -8,7 +8,6 @@
 
 
 GhostSpawner::GhostSpawner(int x, int y, int width, int height, ofImage spriteSheet,EntityManager* entityManager): Entity(x, y, width, height){
-    
     Ghost* blinky = new Ghost(x,y,width,height,spriteSheet,entityManager,Blinky);
 	entityManager->entities.push_back(blinky);
 
@@ -20,8 +19,18 @@ GhostSpawner::GhostSpawner(int x, int y, int width, int height, ofImage spriteSh
 
     Ghost* clyde = new Ghost(x,y,width,height,spriteSheet,entityManager,Clyde);
 	entityManager->entities.push_back(clyde);
-    		
+    this->entityManager = entityManager;
+    this->sprite = spriteSheet;
+    
                     
 
 
+}
+
+void GhostSpawner::keyPressed(int key){
+    switch(key){
+        case 'g':
+            Ghost* ghosts = new Ghost(x,y,width,height,sprite,entityManager,Blinky);
+            entityManager->entities.push_back(ghosts);
+    }
 }

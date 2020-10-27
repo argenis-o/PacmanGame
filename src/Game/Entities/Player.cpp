@@ -52,6 +52,19 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
 }
 
 void Player::tick(){
+    if(ghostdie){
+        if(timer<150){
+            status = "InVulnerable";
+            timer++;
+        }
+        else{
+            ghostdie = false;
+            status = "Vulnerable";
+            timer = 0;
+        }
+    }
+
+
     canMove = true;
     checkCollisions();
     if(canMove){
@@ -94,6 +107,7 @@ void Player::render(){
     ofDrawBitmapString("Score: "+to_string(this->getScore()),  0, 35);
     ofDrawBitmapString("Lives : ", 0, 65);
     ofDrawBitmapString("High Score: " + to_string(this->getHighScore()),0,95);
+    ofDrawBitmapString("Status: "+status, 0, 120);
     gapX = 55;
     for(int i=0;i < health; i++){
         livesIcon.draw(gapX, 55, 20, 20);
@@ -195,13 +209,18 @@ void Player::checkCollisions(){
                 PacManEatsBigDot = SoundEffects::soundManager("PacManSoundEffects/PacManGhostsVulnerable.mp3");
                 score +=50;
                 oneupScore += 5;
+                ghostdie = true;
+                timer = 0;
             }
 
             else if(dynamic_cast<Ghost*>(entity)){
-
-                die();
+                if(ghostdie){
+                    entity->remove = true;
+                }
+                if(!ghostdie){
+                    die();
+                }
                 
-
             }
         }
     }

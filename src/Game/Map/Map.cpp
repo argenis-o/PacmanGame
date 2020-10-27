@@ -18,6 +18,7 @@ void Map::render(){
 
 void Map::keyPressed(int key){
 	player->keyPressed(key);
+	ghost->keyPressed(key);
 
 }
 
@@ -36,6 +37,10 @@ void Map::addEntity(Entity* e){
 }
 void Map::setPlayer(Player* p){
     player = p;
+}
+
+void Map::setSpawner(GhostSpawner* gs){
+	ghost = gs;
 }
 
 

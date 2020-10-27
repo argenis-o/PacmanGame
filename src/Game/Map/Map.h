@@ -1,5 +1,6 @@
 #pragma once
 #include "Player.h"
+#include "GhostSpawner.h"
 
 class Map{
     public:
@@ -7,6 +8,7 @@ class Map{
       void addBlockEntity(BlockEntity*);
       void addEntity(Entity*);
       void setPlayer(Player*);
+      void setSpawner(GhostSpawner*);
       void tick();
       void render();
       void keyPressed(int key);
@@ -25,4 +27,5 @@ class Map{
     private:
       EntityManager *entityManager;
       Player *player;
+      GhostSpawner *ghost;
 };

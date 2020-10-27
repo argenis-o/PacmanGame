@@ -10,5 +10,7 @@ class GhostSpawner: public Entity{
         //void tick();
         EntityManager* entityManager;
 
+        void keyPressed(int);
+
 };
 

@@ -59,6 +59,9 @@ class Player: public Entity{
         bool BeginningHealth = true;
         vector <int> lives;
         int gapX;
+        int timer = 0;
+        string status = "Vulnerable";
+        bool ghostdie = false;
         
         void setHealth(int h){this->health = h;};
 

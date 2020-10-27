@@ -4,7 +4,8 @@
 
 
 Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityManager *em, GHOSTNAMES name): Entity(x, y, width, height){
-    sprite.load("images/background.png");
+    this->sprite = spriteSheet;
+    // sprite.load("images/background.png");
     //sprite.cropFrom(spriteSheet,456,64,16,16);
     this->name = name;
     switch(name){
