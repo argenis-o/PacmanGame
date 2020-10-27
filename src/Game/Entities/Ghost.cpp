@@ -11,31 +11,31 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
         case Blinky:
             down.cropFrom(sprite, 552, 64, 16, 16);
             up.cropFrom(sprite, 520, 64, 16, 16);
-            left.cropFrom(sprite, 456, 64, 16, 16);
-            right.cropFrom(sprite, 488, 64, 16, 16);
+            left.cropFrom(sprite, 488, 64, 16, 16);
+            right.cropFrom(sprite, 456, 64, 16, 16);
             break;
             
         
         case Pinky:
             down.cropFrom(sprite, 552, 80, 16, 16);
             up.cropFrom(sprite, 520, 80, 16, 16);
-            left.cropFrom(sprite, 456, 80, 16, 16);
-            right.cropFrom(sprite, 488, 80, 16, 16);
+            left.cropFrom(sprite, 488, 80, 16, 16);
+            right.cropFrom(sprite, 456, 80, 16, 16);
             break;
 
         case Clyde:
             down.cropFrom(sprite, 552, 96, 16, 16);
             up.cropFrom(sprite, 520, 96, 16, 16);
-            left.cropFrom(sprite, 456, 96, 16, 16);
-            right.cropFrom(sprite, 488, 96, 16, 16);
+            left.cropFrom(sprite, 488, 96, 16, 16);
+            right.cropFrom(sprite, 456, 96, 16, 16);
             break;
             
 
         case Inky:
             down.cropFrom(sprite, 552, 112, 16, 16);
             up.cropFrom(sprite, 520, 112, 16, 16);
-            left.cropFrom(sprite, 456, 112, 16, 16);
-            right.cropFrom(sprite, 488, 112, 16, 16);
+            left.cropFrom(sprite, 488, 112, 16, 16);
+            right.cropFrom(sprite, 456, 112, 16, 16);
             break;
             
     }
