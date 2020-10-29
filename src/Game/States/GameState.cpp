@@ -4,10 +4,14 @@
 GameState::GameState() {
 	mapImage.load("images/map1.png");
 	map = MapBuilder().createMap(mapImage);   //generates a new map.
+	HighS = 0;
 }
 void GameState::tick() {
+	if(HighS == 0 || map->getHighScore()>HighS){
+		HighS = map->getHighScore();
+	}
 	map->tick();
-	if(map->getHealth() == 0){
+	if(map->getHealth() == 0 || map->getDotCount()==0){
 		setNextState("Replay");
 		setFinished(true);
 		map->setHealth();
@@ -17,6 +21,8 @@ void GameState::tick() {
 	}
 }
 void GameState::render() {
+	ofDrawBitmapString("High Score: " + to_string(HighS),0,95);
+
 	map->render();
 }
 

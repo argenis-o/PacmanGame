@@ -15,6 +15,7 @@ class GameState: public State{
 		void keyReleased(int key);
 		bool getGamePlaying(){return this->isPlaying;}
 		void setGamePlaying(bool playing){this->isPlaying = playing;}
+		int HighS;
 	
 	private:
 		bool isPlaying;

@@ -52,7 +52,7 @@ class Player: public Entity{
         void setCoordX(){this->x = spawnX;};
         void setCoordY(){this->y = spawnY;};
         void setSpeed(int speed){this->speed = speed;};
-        int getHighScore(){return highScore;}
+        int getHighScore(){return score;}
 
         void ResetPlayer();
         //static bool getGhostDie();

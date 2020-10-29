@@ -1,16 +1,30 @@
 #include "Map.h"
+#include "Dot.h"
+#include "BigDot.h"
 
 Map::Map(EntityManager* em){
     entityManager = em;
 }
 
 void Map::tick(){
+	if(dotC){
+		dotCount = 0;
+		for(Entity* entity:entityManager->entities){
+			if(dynamic_cast<Dot*>(entity)){
+			dotCount++;
+			}
+			else if(dynamic_cast<BigDot*>(entity)){
+			dotCount++;
+			}
+		}
+	}
 	entityManager->tick();
 	player->tick();
 	ghost->tick();
 
 }
 void Map::render(){
+	ofDrawBitmapString("Dots: "+ to_string(dotCount), 0, 155);
     ofSetBackgroundColor(0, 0, 0);
 	entityManager->render();
 	player->render();
@@ -65,3 +79,9 @@ void Map::EntityReset(){
 void Map::ResetMap(){
 }
 
+
+
+int Map::getHighScore(){
+	HighScore = player->getHighScore();
+	return HighScore;
+}

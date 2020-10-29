@@ -24,6 +24,17 @@ class Map{
 
       void ResetMap();
 
+
+      int HighScore;
+
+      int getHighScore();
+
+      bool dotC = true;
+
+      int getDotCount(){return dotCount;};
+
+      int dotCount = 0;
+
     private:
       EntityManager *entityManager;
       Player *player;
