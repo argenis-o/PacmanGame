@@ -43,8 +43,27 @@ void GhostSpawner::tick(){
 void GhostSpawner::keyPressed(int key){
     switch(key){
         case 'g':
-            Ghost* ghosts = new Ghost(x,y,width,height,sprite,entityManager,Blinky);
-            entityManager->entities.push_back(ghosts);
+            randomColor = ofRandom(0,4);
+            if(randomColor == 0){
+                Ghost* ghosts = new Ghost(x,y,width,height,sprite,entityManager,Blinky);
+                entityManager->entities.push_back(ghosts);
+
+            }
+
+            else if(randomColor == 1){
+                Ghost* ghosts = new Ghost(x,y,width,height,sprite,entityManager,Pinky);
+                entityManager->entities.push_back(ghosts);
+            }
+
+            else if(randomColor == 2){
+                Ghost* ghosts = new Ghost(x,y,width,height,sprite,entityManager,Inky);
+                entityManager->entities.push_back(ghosts);
+            }
+
+            else{
+                Ghost* ghosts = new Ghost(x,y,width,height,sprite,entityManager,Clyde);
+                entityManager->entities.push_back(ghosts);
+            }
     }
 }
 

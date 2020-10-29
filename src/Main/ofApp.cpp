@@ -8,7 +8,7 @@ void ofApp::setup(){
 		
 
 	ofSetFrameRate(30);
-	ofSetWindowTitle("PacMan"); //Can I change this?
+	ofSetWindowTitle("PacMan"); 
 
 	//States
 	menuState = new MenuState();
@@ -23,10 +23,10 @@ void ofApp::update(){
 	if (currentState != nullptr){
 		currentState->tick();
 		if(currentState->hasFinished()){
-			ofLog() << currentState->getNextState();
 			if(currentState->getNextState() == "Menu"){
 				currentState = menuState;
-			}else if(currentState->getNextState() == "Game"){
+			}
+			else if(currentState->getNextState() == "Game"){
 				currentState = gameState;
 
 				

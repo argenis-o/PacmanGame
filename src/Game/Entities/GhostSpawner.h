@@ -7,12 +7,11 @@ class GhostSpawner: public Entity{
 
     public:
         GhostSpawner(int, int, int, int, ofImage, EntityManager* entityManager);
-        //void tick();
         EntityManager* entityManager;
         void tick();
-
         void keyPressed(int);
         bool viewGhostCount();
+        int randomColor;
         int gCount = 0;
         int timer = 0;
 

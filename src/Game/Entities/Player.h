@@ -55,13 +55,16 @@ class Player: public Entity{
         int getHighScore(){return highScore;}
 
         void ResetPlayer();
+        //static bool getGhostDie();
+        //static void setGhostDie(bool isVulneable);
+
 
         bool BeginningHealth = true;
         vector <int> lives;
         int gapX;
         int timer = 0;
         string status = "Vulnerable";
-        bool ghostdie = false;
+         bool ghostdie;
         
         void setHealth(int h){this->health = h;};
 
@@ -72,5 +75,6 @@ class Player: public Entity{
         ofSoundPlayer PacManDies;
         ofSoundPlayer PacManEatsBigDot;
         ofSoundPlayer PacManOneUp;
+        ofSoundPlayer PacManEatsGhost;
 
 };

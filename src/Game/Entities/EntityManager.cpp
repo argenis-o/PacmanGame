@@ -6,7 +6,9 @@ void EntityManager::tick(){
         if(!entities[i]->remove){
             entities[i]->tick();
 
-        }else{
+        }
+        
+        else{
             toRemove.push_back(i);
         }
     }

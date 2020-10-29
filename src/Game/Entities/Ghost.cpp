@@ -1,10 +1,13 @@
 #include "Ghost.h"
 #include "EntityManager.h"
+#include "Player.h"
 
 
 
 Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityManager *em, GHOSTNAMES name): Entity(x, y, width, height){
     this->sprite = spriteSheet;
+    blueVulnerable.cropFrom(sprite,584,64,16,16);
+    CyanVulnerable.cropFrom(sprite,616,64,16,16);
     // sprite.load("images/background.png");
     //sprite.cropFrom(spriteSheet,456,64,16,16);
     this->name = name;
@@ -54,19 +57,15 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
     vector<ofImage> rightAnimframes;
     ofImage temp;
     for(int i=0; i<3; i++){
-        temp.cropFrom(sprite, 552, 64, 16, 16);
         downAnimframes.push_back(down);
     }
     for(int i=0; i<3; i++){
-        temp.cropFrom(sprite, 520, 64, 16, 16);
         upAnimframes.push_back(up);
     }
     for(int i=0; i<3; i++){
-        temp.cropFrom(sprite, 456, 64, 16, 16);
         leftAnimframes.push_back(left);
     }
     for(int i=0; i<3; i++){
-        temp.cropFrom(sprite, 488, 64, 16, 16);
         rightAnimframes.push_back(right);
     }
     walkDown = new Animation(1,downAnimframes);
@@ -188,6 +187,62 @@ void Ghost::tick(){
 void Ghost::render(){
     ofSetColor(256,256,256);
     // ofDrawRectangle(getBounds());
+
+    if(true){
+        switch(name){
+            case Blinky:
+                setDirectionUp(blueVulnerable);
+                setDirectionDown(CyanVulnerable);
+                setDirectionRight(blueVulnerable);
+                setDirectionLeft(CyanVulnerable);
+                /*down.cropFrom(sprite, 552, 64, 16, 16);
+                up.cropFrom(sprite, 520, 64, 16, 16);
+                left.cropFrom(sprite, 488, 64, 16, 16);
+                right.cropFrom(sprite, 456, 64, 16, 16);*/
+                break;
+            
+        
+            case Pinky:
+                setDirectionUp(blueVulnerable);
+                setDirectionDown(CyanVulnerable);
+                setDirectionRight(blueVulnerable);
+                setDirectionLeft(CyanVulnerable);
+               /* down.cropFrom(sprite, 552, 80, 16, 16);
+                up.cropFrom(sprite, 520, 80, 16, 16);
+                left.cropFrom(sprite, 488, 80, 16, 16);
+                right.cropFrom(sprite, 456, 80, 16, 16);
+                break;*/
+
+            case Clyde:
+
+                setDirectionUp(blueVulnerable);
+                setDirectionDown(CyanVulnerable);
+                setDirectionRight(blueVulnerable);
+                setDirectionLeft(CyanVulnerable);
+                /*down.cropFrom(sprite, 552, 96, 16, 16);
+                up.cropFrom(sprite, 520, 96, 16, 16);
+                left.cropFrom(sprite, 488, 96, 16, 16);
+                right.cropFrom(sprite, 456, 96, 16, 16);*/
+                break;
+                
+
+            case Inky:
+
+                setDirectionUp(blueVulnerable);
+                setDirectionDown(CyanVulnerable);
+                setDirectionRight(blueVulnerable);
+                setDirectionLeft(CyanVulnerable);
+                /*down.cropFrom(sprite, 552, 112, 16, 16);
+                up.cropFrom(sprite, 520, 112, 16, 16);
+                left.cropFrom(sprite, 488, 112, 16, 16);
+                right.cropFrom(sprite, 456, 112, 16, 16);
+                break;*/
+                
+        }
+        
+    }
+    
+    
     if(facing == GHOSTUP){
         walkUp->getCurrentFrame().draw(x, y, width, height);
         
@@ -216,6 +271,8 @@ void Ghost::render(){
 void Ghost::setFacing(GHOSTFACING facing){
     this->facing = facing;
 }
+
+
 
 
 void Ghost::checkGhostCollisions(){

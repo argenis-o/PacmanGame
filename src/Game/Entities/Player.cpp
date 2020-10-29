@@ -9,6 +9,7 @@
 
 
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
+    ghostdie = false;
     sprite.load("images/pacman.png");
     setSpeed(0);
     //canMove = false;
@@ -210,11 +211,14 @@ void Player::checkCollisions(){
                 score +=50;
                 oneupScore += 5;
                 ghostdie = true;
+                //setGhostDie(true);
+        
                 timer = 0;
             }
 
             else if(dynamic_cast<Ghost*>(entity)){
                 if(ghostdie){
+                    PacManEatsGhost = SoundEffects::soundManager("PacManSoundEffects/pacManEatsGhost.mp3");
                     entity->remove = true;
                 }
                 if(!ghostdie){
@@ -253,6 +257,7 @@ void Player::oneup(){
     health ++;
     PacManOneUp = SoundEffects::soundManager("PacManSoundEffects/PacManExtraLife.mp3");
 }
+
 
 
 
