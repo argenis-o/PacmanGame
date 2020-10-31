@@ -27,6 +27,8 @@ void ofApp::update(){
 				currentState = menuState;
 			}
 			else if(currentState->getNextState() == "Game"){
+				GhostsMovement = SoundEffects::soundManager("PacManSoundEffects/PacManBackGround.mp3");
+				GhostsMovement.setLoop(true);
 				currentState = gameState;
 
 				

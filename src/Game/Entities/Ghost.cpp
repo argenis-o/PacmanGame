@@ -1,6 +1,9 @@
 #include "Ghost.h"
 #include "EntityManager.h"
 #include "Player.h"
+#include "SoundEffects.h"
+
+
 
 
 
@@ -55,6 +58,9 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
     vector<ofImage> upAnimframes;
     vector<ofImage> leftAnimframes;
     vector<ofImage> rightAnimframes;
+    vector<ofImage> blueAnimframes;
+    vector<ofImage> whiteAnimframes;
+    
     ofImage temp;
     for(int i=0; i<3; i++){
         downAnimframes.push_back(down);
@@ -68,10 +74,15 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
     for(int i=0; i<3; i++){
         rightAnimframes.push_back(right);
     }
+
+    blueAnimframes.push_back(blueVulnerable);
+    
+    
     walkDown = new Animation(1,downAnimframes);
     walkUp = new Animation(1,upAnimframes);
     walkLeft = new Animation(1,leftAnimframes);
     walkRight = new Animation(1,rightAnimframes);
+    blue = new Animation(1,blueAnimframes);
     this->em = em;
 
     
@@ -89,22 +100,34 @@ void Ghost::tick(){
     if(canMove){
         if(facing == GHOSTUP){
             y-= speed;
-            walkUp->tick();
+            //walkUp->tick();
+            if(isDead){
+                blue->tick();
+            }
         }
         
         else if(facing == GHOSTDOWN){
             y+=speed;
-            walkDown->tick();
+            //walkDown->tick();
+            if(isDead){
+                blue->tick();
+            }
         }
         
         else if(facing == GHOSTLEFT){
             x-=speed;
-            walkLeft->tick();
+            //walkLeft->tick();
+            if(isDead){
+                blue->tick();
+            }
         }
         
         else if(facing == GHOSTRIGHT){
             x+=speed;
-            walkRight->tick();
+            //walkRight->tick();
+            if(isDead){
+                blue->tick();
+            }
         }
     }
 
@@ -186,78 +209,52 @@ void Ghost::tick(){
 
 void Ghost::render(){
     ofSetColor(256,256,256);
-    // ofDrawRectangle(getBounds());
-
-    if(true){
-        switch(name){
-            case Blinky:
-                setDirectionUp(blueVulnerable);
-                setDirectionDown(CyanVulnerable);
-                setDirectionRight(blueVulnerable);
-                setDirectionLeft(CyanVulnerable);
-                /*down.cropFrom(sprite, 552, 64, 16, 16);
-                up.cropFrom(sprite, 520, 64, 16, 16);
-                left.cropFrom(sprite, 488, 64, 16, 16);
-                right.cropFrom(sprite, 456, 64, 16, 16);*/
-                break;
-            
+    // ofDrawRectangle(getBounds())
+    if(facing == GHOSTUP){
+        if(isDead){
+            blue->getCurrentFrame().draw(x,y,width,height);
+        }
         
-            case Pinky:
-                setDirectionUp(blueVulnerable);
-                setDirectionDown(CyanVulnerable);
-                setDirectionRight(blueVulnerable);
-                setDirectionLeft(CyanVulnerable);
-               /* down.cropFrom(sprite, 552, 80, 16, 16);
-                up.cropFrom(sprite, 520, 80, 16, 16);
-                left.cropFrom(sprite, 488, 80, 16, 16);
-                right.cropFrom(sprite, 456, 80, 16, 16);
-                break;*/
-
-            case Clyde:
-
-                setDirectionUp(blueVulnerable);
-                setDirectionDown(CyanVulnerable);
-                setDirectionRight(blueVulnerable);
-                setDirectionLeft(CyanVulnerable);
-                /*down.cropFrom(sprite, 552, 96, 16, 16);
-                up.cropFrom(sprite, 520, 96, 16, 16);
-                left.cropFrom(sprite, 488, 96, 16, 16);
-                right.cropFrom(sprite, 456, 96, 16, 16);*/
-                break;
-                
-
-            case Inky:
-
-                setDirectionUp(blueVulnerable);
-                setDirectionDown(CyanVulnerable);
-                setDirectionRight(blueVulnerable);
-                setDirectionLeft(CyanVulnerable);
-                /*down.cropFrom(sprite, 552, 112, 16, 16);
-                up.cropFrom(sprite, 520, 112, 16, 16);
-                left.cropFrom(sprite, 488, 112, 16, 16);
-                right.cropFrom(sprite, 456, 112, 16, 16);
-                break;*/
-                
+        else{
+            walkUp->getCurrentFrame().draw(x, y, width, height);
         }
         
     }
     
-    
-    if(facing == GHOSTUP){
-        walkUp->getCurrentFrame().draw(x, y, width, height);
+    else if(facing == GHOSTDOWN){
+        //walkDown->getCurrentFrame().draw(x, y, width, height);
+        if(isDead){
+            blue->getCurrentFrame().draw(x,y,width,height);
+        }
+
+        else{
+            walkUp->getCurrentFrame().draw(x, y, width, height);
+        }
         
     }
     
-    else if(facing == GHOSTDOWN){
-        walkDown->getCurrentFrame().draw(x, y, width, height);
-    }
-    
     else if(facing == GHOSTLEFT){
-        walkLeft->getCurrentFrame().draw(x, y, width, height);
+        //walkLeft->getCurrentFrame().draw(x, y, width, height);
+        if(isDead){
+            blue->getCurrentFrame().draw(x,y,width,height);
+        }
+
+        else{
+            walkUp->getCurrentFrame().draw(x, y, width, height);
+        }
     }
     
     else if(facing == GHOSTRIGHT){
-        walkRight->getCurrentFrame().draw(x, y, width, height);
+
+        //walkRight->getCurrentFrame().draw(x, y, width, height);
+        if(isDead){
+            blue->getCurrentFrame().draw(x,y,width,height);
+        }
+
+        else{
+            walkUp->getCurrentFrame().draw(x, y, width, height);
+        }
+
     }
 
 }

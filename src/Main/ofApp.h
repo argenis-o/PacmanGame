@@ -36,6 +36,7 @@ public:
 		
 
 		ofImage Background;
+		ofSoundPlayer GhostsMovement;
 
 		
 };

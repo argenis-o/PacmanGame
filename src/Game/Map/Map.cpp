@@ -30,8 +30,23 @@ void Map::render(){
 	player->render();
 	for(Entity* entity:entityManager->entities){
 		if(dynamic_cast<Ghost*>(entity)){
+			Ghost* DynamicGhost = dynamic_cast<Ghost*>(entity);
 			entity->render();
+
+		if(player->ghostdie){
+				DynamicGhost->setIsEatable(true);
+				/*DynamicGhost->setDirectionUp(DynamicGhost->getBlueSkin());
+                DynamicGhost->setDirectionDown(DynamicGhost->getWhiteSkin());
+                DynamicGhost->setDirectionRight(DynamicGhost->getBlueSkin());
+                DynamicGhost->setDirectionLeft(DynamicGhost->getWhiteSkin());*/
+				
+			}
+
+	
+
 		}
+
+		
 	}
 
 }

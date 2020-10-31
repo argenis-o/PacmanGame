@@ -2,6 +2,8 @@
 #include "EntityManager.h"
 #include "Animation.h"
 #include "Player.h"
+#include "ofSoundPlayer.h"
+
 
 enum GHOSTFACING {
     GHOSTUP,
@@ -29,9 +31,11 @@ class Ghost: public Entity{
         Animation *walkDown;
         Animation *walkLeft;
         Animation *walkRight;
+        Animation *blue;
+        Animation *white;
         EntityManager* em;
         int speed = 4;
-        static bool isEatable;
+        //bool isEatable = false;
         bool isDead;
         
         
@@ -47,12 +51,15 @@ class Ghost: public Entity{
         void setDirectionDown(ofImage image){this->down = image;}
         void setDirectionRight(ofImage image){this->right = image;}
         void setDirectionLeft(ofImage image){this->left = image;}
-        bool getIsEatable(){return this->isEatable;}
-        static void setIsEatable(bool eatable);
-
-
+        ofImage getBlueSkin(){return blueVulnerable;}
+        ofImage getWhiteSkin(){return CyanVulnerable;}
+        //bool getIsEatable(){return this->isEatable;}
+        void setIsEatable(bool eatable){isDead = eatable;}
         void checkGhostCollisions();
+        //void setisDead(bool vulnerable){isDead = vulnerable;}
         int randomDir;
+        //ofSoundPlayer GhostsMovement;
+        
         
 
 

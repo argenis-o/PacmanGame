@@ -1,6 +1,7 @@
 #include "GameState.h"
 #include "Entity.h"
 
+
 GameState::GameState() {
 	mapImage.load("images/map1.png");
 	map = MapBuilder().createMap(mapImage);   //generates a new map.
