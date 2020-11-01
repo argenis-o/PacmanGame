@@ -33,13 +33,16 @@ void Map::render(){
 			Ghost* DynamicGhost = dynamic_cast<Ghost*>(entity);
 			entity->render();
 
-		if(player->ghostdie){
-				DynamicGhost->setIsEatable(true);
-				/*DynamicGhost->setDirectionUp(DynamicGhost->getBlueSkin());
-                DynamicGhost->setDirectionDown(DynamicGhost->getWhiteSkin());
-                DynamicGhost->setDirectionRight(DynamicGhost->getBlueSkin());
-                DynamicGhost->setDirectionLeft(DynamicGhost->getWhiteSkin());*/
-				
+			if(player->ghostdie){
+				if(timer<150){
+					timer++;
+					DynamicGhost->setIsEatable(true);
+
+				}
+			}
+			else{
+				timer = 0;
+				DynamicGhost->setIsEatable(false);
 			}
 
 	

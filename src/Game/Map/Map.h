@@ -35,6 +35,8 @@ class Map{
 
       int dotCount = 0;
 
+      int timer = 0;
+
     private:
       EntityManager *entityManager;
       Player *player;

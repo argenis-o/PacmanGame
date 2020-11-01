@@ -47,17 +47,18 @@ class Ghost: public Entity{
         void render();
         void setFacing(GHOSTFACING facing);
         void setName(GHOSTNAMES name);
-        void setDirectionUp(ofImage image){this->up = image;}
-        void setDirectionDown(ofImage image){this->down = image;}
-        void setDirectionRight(ofImage image){this->right = image;}
-        void setDirectionLeft(ofImage image){this->left = image;}
+
         ofImage getBlueSkin(){return blueVulnerable;}
         ofImage getWhiteSkin(){return CyanVulnerable;}
         //bool getIsEatable(){return this->isEatable;}
         void setIsEatable(bool eatable){isDead = eatable;}
         void checkGhostCollisions();
+
         //void setisDead(bool vulnerable){isDead = vulnerable;}
         int randomDir;
+
+        int deadTU =0, deadTD =0, deadTL = 0, deadTR = 0;
+
         //ofSoundPlayer GhostsMovement;
         
         

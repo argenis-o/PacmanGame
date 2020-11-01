@@ -126,23 +126,23 @@ void Player::keyPressed(int key){
     switch(key){
         case 'w':
             setFacing(UP);
-            setSpeed(2);
+            setSpeed(4);
             //canMove = true;
             break;
         case 's':
             setFacing(DOWN);
-            setSpeed(2);
+            setSpeed(4);
             //canMove = true;
             break;
         case 'a':
             setFacing(LEFT);
             //canMove = true;
-            setSpeed(2);
+            setSpeed(4);
             break;
         case 'd':
             setFacing(RIGHT);
             //canMove = true;
-            setSpeed(2);
+            setSpeed(4);
             break;
         case 'n':
             die();

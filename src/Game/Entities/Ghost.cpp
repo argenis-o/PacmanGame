@@ -76,6 +76,7 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
     }
 
     blueAnimframes.push_back(blueVulnerable);
+    whiteAnimframes.push_back(CyanVulnerable);
     
     
     walkDown = new Animation(1,downAnimframes);
@@ -83,6 +84,7 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
     walkLeft = new Animation(1,leftAnimframes);
     walkRight = new Animation(1,rightAnimframes);
     blue = new Animation(1,blueAnimframes);
+    white = new Animation(1, whiteAnimframes);
     this->em = em;
 
     
@@ -212,7 +214,15 @@ void Ghost::render(){
     // ofDrawRectangle(getBounds())
     if(facing == GHOSTUP){
         if(isDead){
-            blue->getCurrentFrame().draw(x,y,width,height);
+            if(deadTU<30){
+                deadTU++;
+                blue->getCurrentFrame().draw(x,y,width,height);
+            }
+            else if(deadTU<60){
+                deadTU++;
+                white->getCurrentFrame().draw(x,y,width,height);     
+            }
+            else{deadTU = 0;}
         }
         
         else{
@@ -224,7 +234,15 @@ void Ghost::render(){
     else if(facing == GHOSTDOWN){
         //walkDown->getCurrentFrame().draw(x, y, width, height);
         if(isDead){
-            blue->getCurrentFrame().draw(x,y,width,height);
+            if(deadTD<30){
+                deadTD++;
+                blue->getCurrentFrame().draw(x,y,width,height);
+            }
+            else if(deadTD<60){
+                deadTD++;
+                white->getCurrentFrame().draw(x,y,width,height);     
+            }
+            else{deadTD = 0;}
         }
 
         else{
@@ -236,7 +254,15 @@ void Ghost::render(){
     else if(facing == GHOSTLEFT){
         //walkLeft->getCurrentFrame().draw(x, y, width, height);
         if(isDead){
-            blue->getCurrentFrame().draw(x,y,width,height);
+            if(deadTL<30){
+                deadTL;
+                blue->getCurrentFrame().draw(x,y,width,height);
+            }
+            else if(deadTL<60){
+                deadTL++;
+                white->getCurrentFrame().draw(x,y,width,height);     
+            }
+            else{deadTL = 0;}
         }
 
         else{
@@ -248,7 +274,15 @@ void Ghost::render(){
 
         //walkRight->getCurrentFrame().draw(x, y, width, height);
         if(isDead){
-            blue->getCurrentFrame().draw(x,y,width,height);
+            if(deadTR<30){
+                deadTR++;
+                blue->getCurrentFrame().draw(x,y,width,height);
+            }
+            else if(deadTR<60){
+                deadTR++;
+                white->getCurrentFrame().draw(x,y,width,height);     
+            }
+            else{deadTR = 0;}
         }
 
         else{
