@@ -246,7 +246,7 @@ void Ghost::render(){
         }
 
         else{
-            walkUp->getCurrentFrame().draw(x, y, width, height);
+            walkDown->getCurrentFrame().draw(x, y, width, height);
         }
         
     }
@@ -266,7 +266,7 @@ void Ghost::render(){
         }
 
         else{
-            walkUp->getCurrentFrame().draw(x, y, width, height);
+            walkLeft->getCurrentFrame().draw(x, y, width, height);
         }
     }
     
@@ -286,7 +286,7 @@ void Ghost::render(){
         }
 
         else{
-            walkUp->getCurrentFrame().draw(x, y, width, height);
+            walkRight->getCurrentFrame().draw(x, y, width, height);
         }
 
     }

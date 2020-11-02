@@ -220,6 +220,7 @@ void Player::checkCollisions(){
                 if(ghostdie){
                     PacManEatsGhost = SoundEffects::soundManager("PacManSoundEffects/pacManEatsGhost.mp3");
                     entity->remove = true;
+                    score += 200;
                 }
                 if(!ghostdie){
                     die();
@@ -255,6 +256,7 @@ void Player::oneup(){
         return;
     }
     health ++;
+    ofDrawBitmapString("OneUp!!",0, 145);
     PacManOneUp = SoundEffects::soundManager("PacManSoundEffects/PacManExtraLife.mp3");
 }
 

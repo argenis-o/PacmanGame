@@ -12,10 +12,8 @@ MenuState::MenuState() {
 void MenuState::tick() {
 	startButton->tick();
 	if(startButton->wasPressed()){
-		//SoundEffects::soundManager("PacManSoundEffects/PacManBeginning.mp3");
-		//ofApp::PacManStartUp = SoundEffects::soundManager("PacManSoundEffects/PacManBeginning.mp3");
+		
 		PacManStartUp = SoundEffects::soundManager("PacManSoundEffects/PacManBeginning.mp3");
-		//PacManStartUp.play();
 		setNextState("Game");
 		setFinished(true);
 

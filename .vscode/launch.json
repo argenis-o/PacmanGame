@@ -27,7 +27,7 @@
             "name": "OSX",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/PacmanProject_debug.app/Contents/MacOS/PacmanProject_debug",
+            "program": "${workspaceFolder}/bin/pa2-pakiman.app/Contents/MacOS/pa2-pakiman",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

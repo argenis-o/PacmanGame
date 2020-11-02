@@ -15,4 +15,11 @@
         "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt -g && $dir$fileNameWithoutExt"
     },
     "terminal.explorerKind": "external",
+    "files.associations": {
+        "algorithm": "cpp",
+        "bitset": "cpp",
+        "memory": "cpp",
+        "optional": "cpp",
+        "vector": "cpp"
+    },
 }

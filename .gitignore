@@ -262,3 +262,6 @@ paket-files/
 __pycache__/
 *.pyc
 
+.vscode/launch.json
+bin/data/PacManSoundEffects/PacManBeginning.mp3
+.vscode/launch.json

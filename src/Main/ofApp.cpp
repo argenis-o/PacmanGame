@@ -14,6 +14,9 @@ void ofApp::setup(){
 	menuState = new MenuState();
 	gameState = new GameState();
 	gameoverState = new GameOverState();
+	winningState = new WinningState();
+
+
 	// Initial State
 	currentState = menuState;
 }
@@ -34,8 +37,13 @@ void ofApp::update(){
 				
 			}
 			else if(currentState->getNextState() == "Replay" ){
-		 	currentState = gameoverState;
+		 		currentState = gameoverState;
 			}
+
+			else if(currentState->getNextState() == "PLAY AGAIN"){
+				currentState = winningState;
+			}
+			
 			currentState->reset();
 		}
 	}
