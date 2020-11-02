@@ -33,7 +33,7 @@ void Map::render(){
 			Ghost* DynamicGhost = dynamic_cast<Ghost*>(entity);
 			entity->render();
 
-			if(player->ghostdie){
+			if(player->ghostdie){ //if PacMan eats a Ghost, set the timer.
 				if(timer<150){
 					timer++;
 					DynamicGhost->setIsEatable(true);
