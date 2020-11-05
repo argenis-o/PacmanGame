@@ -15,13 +15,22 @@ class GameState: public State{
 		void keyReleased(int key);
 		bool getGamePlaying(){return this->isPlaying;}
 		void setGamePlaying(bool playing){this->isPlaying = playing;}
+		void setMap(ofImage newMap){
+			this->mapImage = newMap;
+		}
+
+		int getScore(){return HighS;}
 		int HighS;
+		ofImage newMaps[2];
+		
 	
 	private:
 		bool isPlaying;
 		ofImage mapImage;
 		Map* map;
-		ofSoundPlayer PacManBackGround;
+		ofSoundPlayer PacManStart;
+		ofImage DeathStar; 
+		int count = 0;
 		//MapBuilder* newgame;
 
 

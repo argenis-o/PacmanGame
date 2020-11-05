@@ -1,8 +1,9 @@
 #include "EntityManager.h"
+#include "Ghost.h"
 
 void EntityManager::tick(){
     std::vector<int> toRemove;
-    for(int i=0;i<entities.size();i++){
+    for(int i = 0;i<entities.size();i++){
         if(!entities[i]->remove){
             entities[i]->tick();
 
@@ -22,9 +23,18 @@ void EntityManager::tick(){
 
 void EntityManager::render(){
     for(Entity* entity: entities){
-        entity->render();
+        if(dynamic_cast<Ghost*>(entity) == NULL){
+            entity->render();
+        }
     }
+    
     for(BlockEntity* block: blocks){
         block->render();
     }
+
+    for(Entity* entity: entities){
+        if(dynamic_cast<Ghost*>(entity) != NULL){
+            entity->render();
+        }
+    }   
 }

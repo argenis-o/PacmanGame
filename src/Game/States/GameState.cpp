@@ -1,11 +1,23 @@
 #include "GameState.h"
 #include "Entity.h"
-
+#include "WinningState.h"
 
 GameState::GameState() {
+
+	/*if(count == 0){
+		mapImage.load("images/map1.png");
+		map = MapBuilder().createMap(mapImage);   //generates a new map.
+		HighS = 0;
+	}*/
+
 	mapImage.load("images/map1.png");
-	map = MapBuilder().createMap(mapImage);   //generates a new map.
+	DeathStar.load("images/DeathstarMap.png");
+	map = MapBuilder().createMap(DeathStar);   //generates a new map.
 	HighS = 0;
+	newMaps[0] = mapImage;
+	newMaps[1] = DeathStar;
+
+	
 }
 void GameState::tick() {
 	if(HighS == 0 || map->getHighScore()>HighS){
@@ -17,16 +29,17 @@ void GameState::tick() {
 		setNextState("Replay");
 		setFinished(true);
 		map->setHealth();
-		map = MapBuilder().createMap(mapImage);
+		map = MapBuilder().createMap(newMaps[1]);
 
 		// newgame->createMap(mapImage);
 	}
 
 	else if(map->getDotCount()==0 && map->getHealth() > 0){
+		count++;
 		setNextState("PLAY AGAIN");
 		setFinished(true);
 		map->setHealth();
-		map = MapBuilder().createMap(mapImage);
+		map = MapBuilder().createMap(newMaps[0]);
 	}
 
 

@@ -1,5 +1,6 @@
 #include "ofApp.h"
 #include "Images.h"
+#include "Map.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -31,16 +32,19 @@ void ofApp::update(){
 			}
 			else if(currentState->getNextState() == "Game"){
 				GhostsMovement = SoundEffects::soundManager("PacManSoundEffects/PacManBackGround.mp3");
+				PacManStart = SoundEffects::soundManager("PacManSoundEffects/PacManBeginning.mp3");
 				GhostsMovement.setLoop(true);
 				currentState = gameState;
 
 				
 			}
 			else if(currentState->getNextState() == "Replay" ){
+				GhostsMovement.setPaused(true);
 		 		currentState = gameoverState;
 			}
 
 			else if(currentState->getNextState() == "PLAY AGAIN"){
+				GhostsMovement.setPaused(true);
 				currentState = winningState;
 			}
 			
@@ -62,6 +66,13 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 	if (currentState != nullptr)
+		switch(key){
+			case 't':
+				currentState = winningState;
+				currentState->keyPressed(key);
+				
+		}
+		
 		currentState->keyPressed(key);
 
 }

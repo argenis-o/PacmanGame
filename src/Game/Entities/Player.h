@@ -24,7 +24,7 @@ class Player: public Entity{
         int speed;
         bool walking = false;
         FACING facing = DOWN;
-        ofImage up, down, left, right;
+        ofImage up, down, left, right,die1,die2,die3,die4;
         Animation *walkUp;
         Animation *walkDown;
         Animation *walkLeft;

@@ -43,7 +43,7 @@ void GhostSpawner::tick(){
 void GhostSpawner::keyPressed(int key){
     switch(key){
         case 'g':
-            randomColor = ofRandom(0,4);
+            randomColor = int(ofRandom(0,4));
             if(randomColor == 0){
                 Ghost* ghosts = new Ghost(x,y,width,height,sprite,entityManager,Blinky);
                 entityManager->entities.push_back(ghosts);

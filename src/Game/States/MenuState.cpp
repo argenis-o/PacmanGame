@@ -12,8 +12,6 @@ MenuState::MenuState() {
 void MenuState::tick() {
 	startButton->tick();
 	if(startButton->wasPressed()){
-		
-		PacManStartUp = SoundEffects::soundManager("PacManSoundEffects/PacManBeginning.mp3");
 		setNextState("Game");
 		setFinished(true);
 
@@ -21,7 +19,7 @@ void MenuState::tick() {
 }
 void MenuState::render() {
 	ofImage background = getImage();
-	background.load("images/intro.png");
+	background.load("images/PacManMenu.png");
 	background.draw(0,0,ofGetWidth(),ofGetHeight());
 	startButton->render();
 	ofSetBackgroundColor(0, 0, 0);

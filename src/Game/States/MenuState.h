@@ -17,5 +17,5 @@ public:
 	void mousePressed(int x, int y, int button);
 	void reset();
 	ofImage getImage(){return this->img1;}
-	ofSoundPlayer PacManStartUp;
+	
 };

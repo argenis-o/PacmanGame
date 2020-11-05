@@ -39,6 +39,7 @@ public:
 
 		ofImage Background;
 		ofSoundPlayer GhostsMovement;
+		ofSoundPlayer PacManStart;
 
 		
 };

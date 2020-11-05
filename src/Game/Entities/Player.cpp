@@ -9,6 +9,9 @@
 
 
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
+    die1.cropFrom(sprite,502,1,16,16);
+    die2.cropFrom(sprite,517,1,16,16);
+    //die2.cropFrom()
     ghostdie = false;
     sprite.load("images/pacman.png");
     setSpeed(0);
@@ -26,6 +29,7 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
     vector<ofImage> upAnimframes;
     vector<ofImage> leftAnimframes;
     vector<ofImage> rightAnimframes;
+    vector<ofImage> deadAnimation;
     ofImage temp;
     for(int i=0; i<3; i++){
         temp.cropFrom(sprite, i*16, 48, 16, 16);
@@ -43,6 +47,10 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
         temp.cropFrom(sprite, i*16, 0, 16, 16);
         rightAnimframes.push_back(temp);
     }
+
+    
+      
+    
     walkDown = new Animation(1,downAnimframes);
     walkUp = new Animation(1,upAnimframes);
     walkLeft = new Animation(1,leftAnimframes);

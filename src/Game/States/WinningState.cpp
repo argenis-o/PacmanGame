@@ -1,4 +1,5 @@
 #include "WinningState.h"
+#include "GameState.h"
 
 
 WinningState::WinningState(){

@@ -34,8 +34,10 @@ class State {
 			this->nextState = nextState;
 		}
 
+		
 	private:
 		string nextState;
 		bool finished = false;
+		
 
 };
