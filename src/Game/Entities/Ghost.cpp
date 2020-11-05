@@ -11,7 +11,6 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
     this->sprite = spriteSheet;
     blueVulnerable.cropFrom(sprite,584,64,16,16);
     CyanVulnerable.cropFrom(sprite,616,64,16,16);
-    isDead = false;
     // sprite.load("images/background.png");
     //sprite.cropFrom(spriteSheet,456,64,16,16);
     this->name = name;
@@ -103,73 +102,100 @@ void Ghost::tick(){
     if(canMove){
         if(facing == GHOSTUP){
             y-= speed;
-            checkSurroundingUP.push_back(GHOSTLEFT);
-            checkSurroundingUP.push_back(GHOSTRIGHT);
-            checkSurroundingUP.push_back(GHOSTUP);
-            
+            //walkUp->tick();
             if(isDead){
                 blue->tick();
-                white->tick();
             }
         }
         
         else if(facing == GHOSTDOWN){
             y+=speed;
-            checkSurroundingDOWN.push_back(GHOSTLEFT);
-            checkSurroundingDOWN.push_back(GHOSTRIGHT);
-            checkSurroundingDOWN.push_back(GHOSTDOWN);
-           
-
+            //walkDown->tick();
             if(isDead){
                 blue->tick();
-                white->tick();
             }
         }
         
         else if(facing == GHOSTLEFT){
             x-=speed;
-            checkSurroundingLEFT.push_back(GHOSTDOWN);
-            checkSurroundingLEFT.push_back(GHOSTUP);
-            checkSurroundingLEFT.push_back(GHOSTRIGHT);
-
+            //walkLeft->tick();
             if(isDead){
                 blue->tick();
-                white->tick();
             }
         }
         
         else if(facing == GHOSTRIGHT){
             x+=speed;
-            checkSurroundingRIGHT.push_back(GHOSTDOWN);
-            checkSurroundingRIGHT.push_back(GHOSTUP);
-            checkSurroundingRIGHT.push_back(GHOSTLEFT);
+            //walkRight->tick();
             if(isDead){
                 blue->tick();
-                white->tick();
             }
         }
     }
 
     else{
         if(facing == GHOSTUP){
-            setFacing(checkSurroundingUP[int(ofRandom(checkSurroundingUP.size()-1))]);
+            randomDir = ofRandom(0,3);
+            switch(randomDir){
+                case 0:
+                    setFacing(GHOSTRIGHT);
+                    break;
+                case 1:
+                    setFacing(GHOSTLEFT);
+                    break;
+                case 2:
+                    setFacing(GHOSTUP);
+                    break;
+            }
 
         }
 
         else if(facing == GHOSTDOWN){
-            setFacing(checkSurroundingDOWN[int(ofRandom(checkSurroundingDOWN.size()-1))]);
-            
+            randomDir = ofRandom(0,3);
+            switch(randomDir){
+                case 0:
+                    setFacing(GHOSTRIGHT);
+                    break;
+                case 1:
+                    setFacing(GHOSTLEFT);
+                    break;
+                case 2:
+                    setFacing(GHOSTUP);
+                    break;
+            }
 
         }
 
         else if(facing == GHOSTRIGHT){
-            setFacing(checkSurroundingRIGHT[int(ofRandom(checkSurroundingRIGHT.size()-1))]);
+            randomDir = ofRandom(0,3);
+            switch(randomDir){
+                case 0:
+                    setFacing(GHOSTDOWN);
+                    break;
+                case 1:
+                    setFacing(GHOSTLEFT);
+                    break;
+                case 2:
+                    setFacing(GHOSTUP);
+                    break;
+            }
 
         }
 
 
-        else if(facing == GHOSTLEFT){
-            setFacing(checkSurroundingLEFT[int(ofRandom(checkSurroundingLEFT.size()-1))]);
+            else if(facing == GHOSTLEFT){
+            randomDir = ofRandom(0,3);
+            switch(randomDir){
+                case 0:
+                    setFacing(GHOSTDOWN);
+                    break;
+                case 1:
+                    setFacing(GHOSTRIGHT);
+                    break;
+                case 2:
+                    setFacing(GHOSTUP);
+                    break;
+            }
 
         }
 
@@ -307,10 +333,6 @@ void Ghost::checkGhostCollisions(){
     }
 
 }
-
-
-
-
 
 
 

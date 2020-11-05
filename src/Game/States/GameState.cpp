@@ -12,7 +12,7 @@ GameState::GameState() {
 
 	mapImage.load("images/map1.png");
 	DeathStar.load("images/DeathstarMap.png");
-	map = MapBuilder().createMap(DeathStar);   //generates a new map.
+	map = MapBuilder().createMap(mapImage);   //generates a new map.
 	HighS = 0;
 	newMaps[0] = mapImage;
 	newMaps[1] = DeathStar;
@@ -29,7 +29,7 @@ void GameState::tick() {
 		setNextState("Replay");
 		setFinished(true);
 		map->setHealth();
-		map = MapBuilder().createMap(newMaps[1]);
+		map = MapBuilder().createMap(newMaps[0]);
 
 		// newgame->createMap(mapImage);
 	}
@@ -39,7 +39,7 @@ void GameState::tick() {
 		setNextState("PLAY AGAIN");
 		setFinished(true);
 		map->setHealth();
-		map = MapBuilder().createMap(newMaps[0]);
+		map = MapBuilder().createMap(newMaps[count]);
 	}
 
 

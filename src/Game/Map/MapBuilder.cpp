@@ -9,6 +9,7 @@ MapBuilder::MapBuilder(){
 	ghostC = ofColor(25, 255,0);
 	dotC = ofColor(255, 10, 0);
 	bigDotC = ofColor(167, 0, 150);
+	powerups = ofColor(63,72,204);
 	pacmanSpriteSheet.load("images/Background.png");
 	tempBound.cropFrom(pacmanSpriteSheet, 603,18,16,16);
 	bound.push_back(tempBound);//single
@@ -64,6 +65,8 @@ Map* MapBuilder::createMap(ofImage mapImage){
 			else if(currentPixel == pacman){
                 Player* PacMan = new Player(xPos,yPos,pixelMultiplier,pixelMultiplier, entityManager);
 				mapInCreation->setPlayer(PacMan);
+				// PowerupSpawner* Powerup = new PowerupSpawner(xPos, yPos,pixelMultiplier, pixelMultiplier, pacmanSpriteSheet, entityManager);
+				// mapInCreation->setPowerups(Powerup);
             }
 			
 			else if(currentPixel == ghostC){
@@ -81,6 +84,12 @@ Map* MapBuilder::createMap(ofImage mapImage){
                 BigDot* bigDot = new BigDot(xPos,yPos,pixelMultiplier,pixelMultiplier, pacmanSpriteSheet);
                 mapInCreation->addEntity(bigDot);
             }
+
+			else if(currentPixel == powerups){
+				PowerupSpawner* Powerup = new PowerupSpawner(xPos, yPos,pixelMultiplier, pixelMultiplier, pacmanSpriteSheet, entityManager);
+				mapInCreation->setPowerups(Powerup);
+
+			}
 
 			
         }

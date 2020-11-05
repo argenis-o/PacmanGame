@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.h"
 #include "GhostSpawner.h"
+#include "PowerupSpawner.h"
 
 class Map{
     public:
@@ -37,8 +38,12 @@ class Map{
 
       int timer = 0;
 
+      void setPowerups(PowerupSpawner*);
+
+
     private:
       EntityManager *entityManager;
       Player *player;
       GhostSpawner *ghost;
+      PowerupSpawner *power;
 };

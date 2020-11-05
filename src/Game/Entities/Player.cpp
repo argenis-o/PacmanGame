@@ -5,6 +5,7 @@
 #include "SoundEffects.h"
 #include "Ghost.h"
 #include "GhostSpawner.h"
+#include "Powerups.h"
 
 
 
@@ -234,6 +235,10 @@ void Player::checkCollisions(){
                     die();
                 }
                 
+            }
+            else if(dynamic_cast<Powerups*>(entity)){
+                entity->remove = true;
+                score += 500;
             }
         }
     }

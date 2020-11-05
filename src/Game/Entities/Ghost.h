@@ -3,7 +3,7 @@
 #include "Animation.h"
 #include "Player.h"
 #include "ofSoundPlayer.h"
-#include <vector>
+
 
 enum GHOSTFACING {
     GHOSTUP,
@@ -47,23 +47,19 @@ class Ghost: public Entity{
         void render();
         void setFacing(GHOSTFACING facing);
         void setName(GHOSTNAMES name);
-        GHOSTNAMES getGhostName(){return this->name;}
-        void spawn();
+
         ofImage getBlueSkin(){return blueVulnerable;}
         ofImage getWhiteSkin(){return CyanVulnerable;}
-    
+        //bool getIsEatable(){return this->isEatable;}
         void setIsEatable(bool eatable){isDead = eatable;}
         void checkGhostCollisions();
 
+        //void setisDead(bool vulnerable){isDead = vulnerable;}
         int randomDir;
-        vector<GHOSTFACING> checkSurroundingUP;
-        vector<GHOSTFACING> checkSurroundingDOWN;
-        vector<GHOSTFACING> checkSurroundingRIGHT;
-        vector<GHOSTFACING> checkSurroundingLEFT;
+
         int deadTU =0, deadTD =0, deadTL = 0, deadTR = 0;
 
-
-        
+        //ofSoundPlayer GhostsMovement;
         
         
 
