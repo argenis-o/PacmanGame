@@ -16,33 +16,18 @@ class Map{
       void keyPressed(int key);
 		  void mousePressed(int x, int y, int button);
 		  void keyReleased(int key);
-
-      
       int getHealth();
-
       void setHealth();
-
       void EntityReset();
-
       void ResetMap();
-
-
       int HighScore;
-
       int getHighScore();
-
       bool dotC = true;
-
       int getDotCount(){return dotCount;};
-
       int dotCount = 0;
-
       int timer = 0;
-
       int chokeTimer = 0;
-
       int FaithTimer = 0;
-
       void setPowerups(PowerupSpawner*);
 
 

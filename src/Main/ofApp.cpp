@@ -40,11 +40,15 @@ void ofApp::update(){
 			}
 			else if(currentState->getNextState() == "Replay" ){
 				GhostsMovement.setPaused(true);
+				gameoverState->setScore(gameState->getScore());
+				gameoverState->setHighScore(gameState->getHighScore());
+				DarthVaderVoiceline = SoundEffects::soundManager("PacManSoundEffects/DarthVaderVoiceLine2.mp3");
 		 		currentState = gameoverState;
 			}
 
 			else if(currentState->getNextState() == "PLAY AGAIN"){
 				GhostsMovement.setPaused(true);
+				VictorySound = SoundEffects::soundManager("PacManSoundEffects/VictorySound.mp3");
 				currentState = winningState;
 			}
 			

@@ -1,25 +1,47 @@
 #include "DarthVader.h"
+#include "SoundEffects.h"
 
 DarthVader::DarthVader(int x,int y,int width,int height, ofImage sprite, EntityManager* em):Entity(x,y,width,height){
-    // DarthVaderImage.load("images/DarthVader.png");
-    // DarthVaderImage.draw(0,200,16,16);
+    DarthVaderImage.load("images/DarthVader.png");
+
+    
     this->DarthVaderImage = sprite;
     this->em = em;
-    // this->x = 0;
-    // this->y = 225;
-    // this->width = 32;
-    // this->height = 32;
-    //159,87
     Vader.cropFrom(sprite, 315, 238, 75, 123);
     
 }
 
+
+
+
+void DarthVader::tick(){
+    
+     
+   if(timer < 1200){
+       timer++;
+   }
+
+   else{
+       PlayMusic();
+       timer = 0;
+       
+       
+   }
+
+}
+
 void DarthVader::render(){
-    if(timer < 3600){
+    if(timer < 1200){
         timer++;
     }
-    else{surprise = true;}
+    else{
+       
+        surprise = true;
+    
+    }
+    
     if(surprise){
+
         Vader.draw(x,y,width,height);
     }
     if(surprise){
@@ -43,4 +65,12 @@ void DarthVader::render(){
         }
     }
 
+}
+
+
+void DarthVader::PlayMusic(){
+
+    DarthVaderMessage = SoundEffects::soundManager("PacManSoundEffects/DarhVaderVoiceLine.mp3");
+    ImperialMarch = SoundEffects::soundManager("PacManSoundEffects/ImperialMarch.mp3");
+    
 }

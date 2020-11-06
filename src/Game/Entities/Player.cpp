@@ -10,13 +10,10 @@
 
 
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
-    die1.cropFrom(sprite,502,1,16,16);
-    die2.cropFrom(sprite,517,1,16,16);
-    //die2.cropFrom()
+
     ghostdie = false;
     sprite.load("images/pacman.png");
     setSpeed(0);
-    //canMove = false;
     spawnX = this->x;
     spawnY = this->y;
     down.cropFrom(sprite, 0, 48, 16, 16);
@@ -102,22 +99,27 @@ void Player::tick(){
 
 void Player::render(){
     ofSetColor(256,256,256);
-    // ofDrawRectangle(getBounds());
     if(facing == UP){
         walkUp->getCurrentFrame().draw(x, y, width, height);
         
-    }else if(facing == DOWN){
+    }
+    
+    else if(facing == DOWN){
         walkDown->getCurrentFrame().draw(x, y, width, height);
-    }else if(facing == LEFT){
+    }
+    
+    else if(facing == LEFT){
         walkLeft->getCurrentFrame().draw(x, y, width, height);
-    }else if(facing == RIGHT){
+    }
+    
+    else if(facing == RIGHT){
         walkRight->getCurrentFrame().draw(x, y, width, height);
     }
     
     ofDrawBitmapString("Score: "+to_string(this->getScore()),  0, 35);
     ofDrawBitmapString("Lives : ", 0, 65);
-    ofDrawBitmapString("High Score: " + to_string(this->getHighScore()),0,95);
     ofDrawBitmapString("Status: "+status, 0, 120);
+    
     gapX = 55;
     for(int i=0;i < health; i++){
         livesIcon.draw(gapX, 55, 20, 20);
@@ -135,23 +137,19 @@ void Player::keyPressed(int key){
     switch(key){
         case 'w':
             setFacing(UP);
-            setSpeed(4);
-            //canMove = true;
+            setSpeed(2);
             break;
         case 's':
             setFacing(DOWN);
-            setSpeed(4);
-            //canMove = true;
+            setSpeed(2);
             break;
         case 'a':
             setFacing(LEFT);
-            //canMove = true;
-            setSpeed(4);
+            setSpeed(2);
             break;
         case 'd':
             setFacing(RIGHT);
-            //canMove = true;
-            setSpeed(4);
+            setSpeed(2);
             break;
         case 'n':
             die();
@@ -220,8 +218,6 @@ void Player::checkCollisions(){
                 score +=50;
                 oneupScore += 5;
                 ghostdie = true;
-                //setGhostDie(true);
-        
                 timer = 0;
             }
 
@@ -247,10 +243,7 @@ void Player::checkCollisions(){
 
 void Player::die(){
     if(health == 0){
-        
         PacManDies = SoundEffects::soundManager("PacManSoundEffects/PacManDies.mp3");
-        
-        
         return;
     }
     
@@ -268,8 +261,8 @@ void Player::oneup(){
     if(health >=6){
         return;
     }
+    
     health ++;
-    ofDrawBitmapString("OneUp!!",0, 145);
     PacManOneUp = SoundEffects::soundManager("PacManSoundEffects/PacManExtraLife.mp3");
 }
 

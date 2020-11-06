@@ -26,10 +26,7 @@ class Powerups: public Entity{
 
         bool spawn = false;
 
-        // void spawnCherry();
-
-        // ofImage power;
-        // EntityManager* em;
+        
 
 
 };

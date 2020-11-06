@@ -11,8 +11,6 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
     this->sprite = spriteSheet;
     blueVulnerable.cropFrom(sprite,584,64,16,16);
     CyanVulnerable.cropFrom(sprite,616,64,16,16);
-    // sprite.load("images/background.png");
-    //sprite.cropFrom(spriteSheet,456,64,16,16);
     this->name = name;
     switch(name){
         case Blinky:
@@ -47,11 +45,7 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
             
     }
     
-    /*down.cropFrom(sprite, 552, 64, 16, 16);
-    up.cropFrom(sprite, 520, 64, 16, 16);
-    left.cropFrom(sprite, 456, 64, 16, 16);
-    right.cropFrom(sprite, 488, 64, 16, 16);
-    setFacing(GHOSTUP);*/
+   
 
    
     vector<ofImage> downAnimframes;
@@ -102,7 +96,6 @@ void Ghost::tick(){
     if(canMove){
         if(facing == GHOSTUP){
             y-= speed;
-            //walkUp->tick();
             if(isDead){
                 blue->tick();
             }
@@ -110,7 +103,6 @@ void Ghost::tick(){
         
         else if(facing == GHOSTDOWN){
             y+=speed;
-            //walkDown->tick();
             if(isDead){
                 blue->tick();
             }
@@ -118,7 +110,6 @@ void Ghost::tick(){
         
         else if(facing == GHOSTLEFT){
             x-=speed;
-            //walkLeft->tick();
             if(isDead){
                 blue->tick();
             }
@@ -126,7 +117,6 @@ void Ghost::tick(){
         
         else if(facing == GHOSTRIGHT){
             x+=speed;
-            //walkRight->tick();
             if(isDead){
                 blue->tick();
             }
@@ -212,7 +202,6 @@ void Ghost::tick(){
 void Ghost::render(){
     ofSetColor(256,256,256);
     if(!invisable){
-    // ofDrawRectangle(getBounds())
         if(facing == GHOSTUP){
             if(isDead){
                 if(deadTU<30){
@@ -233,7 +222,7 @@ void Ghost::render(){
         }
         
         else if(facing == GHOSTDOWN){
-            //walkDown->getCurrentFrame().draw(x, y, width, height);
+            
             if(isDead){
                 if(deadTD<30){
                     deadTD++;
@@ -253,7 +242,7 @@ void Ghost::render(){
         }
         
         else if(facing == GHOSTLEFT){
-            //walkLeft->getCurrentFrame().draw(x, y, width, height);
+            
             if(isDead){
                 if(deadTL<30){
                     deadTL;
@@ -273,7 +262,7 @@ void Ghost::render(){
         
         else if(facing == GHOSTRIGHT){
 
-            //walkRight->getCurrentFrame().draw(x, y, width, height);
+            
             if(isDead){
                 if(deadTR<30){
                     deadTR++;
