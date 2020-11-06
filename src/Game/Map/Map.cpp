@@ -29,8 +29,9 @@ void Map::render(){
 	entityManager->render();
 	player->render();
 	for(Entity* entity:entityManager->entities){
+		Ghost* DynamicGhost = dynamic_cast<Ghost*>(entity);
 		if(dynamic_cast<Ghost*>(entity)){
-			Ghost* DynamicGhost = dynamic_cast<Ghost*>(entity);
+			//Ghost* DynamicGhost = dynamic_cast<Ghost*>(entity);
 			// entity->render();
 
 			if(player->ghostdie){ //if PacMan eats a Ghost, set the timer.
@@ -40,10 +41,37 @@ void Map::render(){
 
 				}
 			}
-			else{
-				timer = 0;
-				DynamicGhost->setIsEatable(false);
+				else{
+					timer = 0;
+					DynamicGhost->setIsEatable(false);
+				}
+		if(dynamic_cast<DarthVader*>(entity)){
+			DarthVader* DynamicVader = dynamic_cast<DarthVader*>(entity);
+			if(DynamicVader->getForceChoke()){
+				if(chokeTimer<90){
+					chokeTimer++;
+					player->setMove(false);
+				}
+				else{
+					chokeTimer = 0;
+					DynamicVader->setForceChoke(false);
+					player->setMove(true);
+				}
 			}
+			if(DynamicVader->getFeelThePowerOfTheDarkSide()){
+				if(FaithTimer<150){
+					FaithTimer++;
+					DynamicGhost->setInvisable(true);
+				}
+				else{
+					FaithTimer = 0;
+					DynamicVader->setFeelThePowerOfTheDarkSide(false);
+					DynamicGhost->setInvisable(false);
+
+				}
+
+			}
+		}
 
 	
 

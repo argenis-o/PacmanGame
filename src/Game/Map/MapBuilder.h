@@ -5,6 +5,7 @@
 #include "BigDot.h"
 #include "Ghost.h"
 #include "GhostSpawner.h"
+#include "DarthVader.h"
 
 class MapBuilder {
     public:
@@ -21,8 +22,10 @@ class MapBuilder {
 	ofColor dotC;
 	ofColor bigDotC;
         ofColor powerups;
+        ofColor BossC;
         ofImage pacmanSpriteSheet;
         ofImage tempBound;
+        ofImage Darth;
         ofImage getSprite(ofImage, int, int);
         EntityManager* entityManager;
         

@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "GhostSpawner.h"
 #include "PowerupSpawner.h"
+#include "DarthVader.h"
 
 class Map{
     public:
@@ -37,6 +38,10 @@ class Map{
       int dotCount = 0;
 
       int timer = 0;
+
+      int chokeTimer = 0;
+
+      int FaithTimer = 0;
 
       void setPowerups(PowerupSpawner*);
 

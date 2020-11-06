@@ -37,6 +37,8 @@ class Ghost: public Entity{
         int speed = 4;
         //bool isEatable = false;
         bool isDead;
+
+        bool invisable = false;
         
         
         
@@ -54,8 +56,11 @@ class Ghost: public Entity{
         void setIsEatable(bool eatable){isDead = eatable;}
         void checkGhostCollisions();
 
+        void setInvisable(bool f){invisable = f;};
+
         //void setisDead(bool vulnerable){isDead = vulnerable;}
         int randomDir;
+
 
         int deadTU =0, deadTD =0, deadTL = 0, deadTR = 0;
 

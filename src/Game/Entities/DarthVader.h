@@ -4,23 +4,31 @@
 #include "Player.h"
 #include "ofSoundPlayer.h"
 
-/*class DarthVader:public Entity{ 
+class DarthVader:public Entity{ 
 
     private:
-        bool forceChoke;
-        bool feelThePowerOfTheDarkside;
-        bool lackoFaith;
+        bool forceChoke=false;
+        bool feelThePowerOfTheDarkside=false;
+        bool lackoFaith=false;
+        bool surprise = false;
+        //bool em = true;
 
     public: 
-        DarthVader(int x,int y,int width,int height);
-        ofImage DarthVaderImage;
+        DarthVader(int ,int ,int,int, ofImage, EntityManager*em);
+        EntityManager*em;
+        ofImage DarthVaderImage, Vader;
         bool getForceChoke(){return forceChoke;}
         bool getFeelThePowerOfTheDarkSide(){return feelThePowerOfTheDarkside;}
-        bool getLackOfFaith(){return lackoFaith;}
+        // bool getLackOfFaith(){return lackoFaith;}
         void setForceChoke(bool isChoke){forceChoke = isChoke;}
         void setFeelThePowerOfTheDarkSide(bool Power){feelThePowerOfTheDarkside = Power;}
-        void setLackOfFaith(bool faith){lackoFaith = faith;}
-        void tick();
+        // void setLackOfFaith(bool faith){lackoFaith = faith;}
+        //void tick();
         void render();
 
-};*/
+        int timer = 0;
+        int ForceTimer = 0;
+        int darkTimer = 0;
+        int randomAttack;
+
+};

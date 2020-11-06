@@ -10,7 +10,9 @@ MapBuilder::MapBuilder(){
 	dotC = ofColor(255, 10, 0);
 	bigDotC = ofColor(167, 0, 150);
 	powerups = ofColor(63,72,204);
+	BossC = ofColor(195,195,195);
 	pacmanSpriteSheet.load("images/Background.png");
+	Darth.load("images/DarthVader.png");
 	tempBound.cropFrom(pacmanSpriteSheet, 603,18,16,16);
 	bound.push_back(tempBound);//single
 	tempBound.cropFrom(pacmanSpriteSheet, 615,37,16,16);
@@ -67,6 +69,7 @@ Map* MapBuilder::createMap(ofImage mapImage){
 				mapInCreation->setPlayer(PacMan);
 				// PowerupSpawner* Powerup = new PowerupSpawner(xPos, yPos,pixelMultiplier, pixelMultiplier, pacmanSpriteSheet, entityManager);
 				// mapInCreation->setPowerups(Powerup);
+				// DarthVader * SithLord = new DarthVader(xPos, yPos, pixelMultiplier, pixelMultiplier, Darth, entityManager);
             }
 			
 			else if(currentPixel == ghostC){
@@ -89,6 +92,10 @@ Map* MapBuilder::createMap(ofImage mapImage){
 				PowerupSpawner* Powerup = new PowerupSpawner(xPos, yPos,pixelMultiplier, pixelMultiplier, pacmanSpriteSheet, entityManager);
 				mapInCreation->setPowerups(Powerup);
 
+			}
+			else if(currentPixel == BossC){
+				DarthVader * SithLord = new DarthVader(xPos, yPos, 141, 141, Darth, entityManager);
+				mapInCreation->addEntity(SithLord);
 			}
 
 			

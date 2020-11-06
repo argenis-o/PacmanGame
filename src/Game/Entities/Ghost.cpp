@@ -211,84 +211,86 @@ void Ghost::tick(){
 
 void Ghost::render(){
     ofSetColor(256,256,256);
+    if(!invisable){
     // ofDrawRectangle(getBounds())
-    if(facing == GHOSTUP){
-        if(isDead){
-            if(deadTU<30){
-                deadTU++;
-                blue->getCurrentFrame().draw(x,y,width,height);
+        if(facing == GHOSTUP){
+            if(isDead){
+                if(deadTU<30){
+                    deadTU++;
+                    blue->getCurrentFrame().draw(x,y,width,height);
+                }
+                else if(deadTU<60){
+                    deadTU++;
+                    white->getCurrentFrame().draw(x,y,width,height);     
+                }
+                else{deadTU = 0;}
             }
-            else if(deadTU<60){
-                deadTU++;
-                white->getCurrentFrame().draw(x,y,width,height);     
+            
+            else{
+                walkUp->getCurrentFrame().draw(x, y, width, height);
             }
-            else{deadTU = 0;}
+            
         }
         
-        else{
-            walkUp->getCurrentFrame().draw(x, y, width, height);
+        else if(facing == GHOSTDOWN){
+            //walkDown->getCurrentFrame().draw(x, y, width, height);
+            if(isDead){
+                if(deadTD<30){
+                    deadTD++;
+                    blue->getCurrentFrame().draw(x,y,width,height);
+                }
+                else if(deadTD<60){
+                    deadTD++;
+                    white->getCurrentFrame().draw(x,y,width,height);     
+                }
+                else{deadTD = 0;}
+            }
+
+            else{
+                walkDown->getCurrentFrame().draw(x, y, width, height);
+            }
+            
         }
         
-    }
-    
-    else if(facing == GHOSTDOWN){
-        //walkDown->getCurrentFrame().draw(x, y, width, height);
-        if(isDead){
-            if(deadTD<30){
-                deadTD++;
-                blue->getCurrentFrame().draw(x,y,width,height);
+        else if(facing == GHOSTLEFT){
+            //walkLeft->getCurrentFrame().draw(x, y, width, height);
+            if(isDead){
+                if(deadTL<30){
+                    deadTL;
+                    blue->getCurrentFrame().draw(x,y,width,height);
+                }
+                else if(deadTL<60){
+                    deadTL++;
+                    white->getCurrentFrame().draw(x,y,width,height);     
+                }
+                else{deadTL = 0;}
             }
-            else if(deadTD<60){
-                deadTD++;
-                white->getCurrentFrame().draw(x,y,width,height);     
-            }
-            else{deadTD = 0;}
-        }
 
-        else{
-            walkDown->getCurrentFrame().draw(x, y, width, height);
+            else{
+                walkLeft->getCurrentFrame().draw(x, y, width, height);
+            }
         }
         
-    }
-    
-    else if(facing == GHOSTLEFT){
-        //walkLeft->getCurrentFrame().draw(x, y, width, height);
-        if(isDead){
-            if(deadTL<30){
-                deadTL;
-                blue->getCurrentFrame().draw(x,y,width,height);
-            }
-            else if(deadTL<60){
-                deadTL++;
-                white->getCurrentFrame().draw(x,y,width,height);     
-            }
-            else{deadTL = 0;}
-        }
+        else if(facing == GHOSTRIGHT){
 
-        else{
-            walkLeft->getCurrentFrame().draw(x, y, width, height);
-        }
-    }
-    
-    else if(facing == GHOSTRIGHT){
-
-        //walkRight->getCurrentFrame().draw(x, y, width, height);
-        if(isDead){
-            if(deadTR<30){
-                deadTR++;
-                blue->getCurrentFrame().draw(x,y,width,height);
+            //walkRight->getCurrentFrame().draw(x, y, width, height);
+            if(isDead){
+                if(deadTR<30){
+                    deadTR++;
+                    blue->getCurrentFrame().draw(x,y,width,height);
+                }
+                else if(deadTR<60){
+                    deadTR++;
+                    white->getCurrentFrame().draw(x,y,width,height);     
+                }
+                else{deadTR = 0;}
             }
-            else if(deadTR<60){
-                deadTR++;
-                white->getCurrentFrame().draw(x,y,width,height);     
+
+            else{
+                walkRight->getCurrentFrame().draw(x, y, width, height);
             }
-            else{deadTR = 0;}
-        }
 
-        else{
-            walkRight->getCurrentFrame().draw(x, y, width, height);
         }
-
     }
 
 }
