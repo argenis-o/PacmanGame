@@ -48,6 +48,8 @@ void ofApp::update(){
 
 			else if(currentState->getNextState() == "PLAY AGAIN"){
 				GhostsMovement.setPaused(true);
+				winningState->setScore(gameState->getScore());
+				winningState->setHighScore(gameState->getHighScore());
 				VictorySound = SoundEffects::soundManager("PacManSoundEffects/VictorySound.mp3");
 				currentState = winningState;
 			}
