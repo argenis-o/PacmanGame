@@ -15,10 +15,7 @@ class GhostSpawner: public Entity{
         int gCount = 0;
         int timer = 0;
 
-        // bool newghost = false;
-
-        // void setSpawnRate(bool value){newghost = value;};
-        //vector<Ghost*> getGhost(){};
+        
 
 };
 

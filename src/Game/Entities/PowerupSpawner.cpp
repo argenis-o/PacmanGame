@@ -5,9 +5,6 @@
 
 PowerupSpawner::PowerupSpawner(int x, int y, int width, int height, ofImage spritesheet, EntityManager* entityManager):Entity(x,y,width,height){
     this->entityManager = entityManager;
-
-    // Powerups * Cherry = new Powerups(x,y,width,height,spritesheet,entityManager,CHERRY);
-    // entityManager->entities.push_back(Cherry);
     this->entityManager = entityManager;
     this->pow = spritesheet;
 

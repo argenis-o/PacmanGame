@@ -40,6 +40,8 @@ public:
 		ofImage Background;
 		ofSoundPlayer GhostsMovement;
 		ofSoundPlayer PacManStart;
+		ofSoundPlayer DarthVaderVoiceline;
+		ofSoundPlayer VictorySound;
 
 		
 };

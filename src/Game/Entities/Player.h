@@ -24,7 +24,7 @@ class Player: public Entity{
         int speed;
         bool walking = false;
         FACING facing = DOWN;
-        ofImage up, down, left, right,die1,die2,die3,die4;
+        ofImage up, down, left, right;
         Animation *walkUp;
         Animation *walkDown;
         Animation *walkLeft;
@@ -45,7 +45,6 @@ class Player: public Entity{
         void reset();
         void setFacing(FACING facing);
         void checkCollisions();
-
         void StartingH();
         void die();
         void oneup();
@@ -54,19 +53,13 @@ class Player: public Entity{
         void setSpeed(int speed){this->speed = speed;};
         int getHighScore(){return score;}
         void setMove(bool h){canMove =h;};
-
         void ResetPlayer();
-        //static bool getGhostDie();
-        //static void setGhostDie(bool isVulneable);
-
-
         bool BeginningHealth = true;
         vector <int> lives;
         int gapX;
         int timer = 0;
         string status = "Vulnerable";
-         bool ghostdie;
-        
+        bool ghostdie;
         void setHealth(int h){this->health = h;};
 
         

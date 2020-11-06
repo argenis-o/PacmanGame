@@ -19,8 +19,10 @@ class GameState: public State{
 			this->mapImage = newMap;
 		}
 
-		int getScore(){return HighS;}
+		int getScore(){return score;}
+		int getHighScore(){return HighS;}
 		int HighS;
+		int score;
 		ofImage newMaps[2];
 		
 	
@@ -31,7 +33,7 @@ class GameState: public State{
 		ofSoundPlayer PacManStart;
 		ofImage DeathStar; 
 		int count = 0;
-		//MapBuilder* newgame;
+		
 
 
 };

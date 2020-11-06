@@ -19,7 +19,3 @@ void Powerups::render(){
     cherry.draw(x,y,width,height);
 }
 
-// void Powerups::spawnCherry(){
-//     Powerups *Cherry = new Powerups(x,y,width,height,power,em,CHERRY);
-//     em->entities.push_back(Cherry);
-// }

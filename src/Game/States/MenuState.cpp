@@ -5,8 +5,7 @@
 
 
 MenuState::MenuState() {
-	//startButton = new Button(ofGetWidth()/2-300, ofGetHeight()/2 - 200, 1000, 1000, "START");
-	//startButton = new Button(ofGetWidth()/2 -300, ofGetHeight()/2-300, ofGetWidth()-300, ofGetHeight()-400 , "START");
+	
 	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, ofGetWidth()-600, ofGetHeight()-600, "START");
 }
 void MenuState::tick() {

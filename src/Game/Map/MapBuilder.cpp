@@ -67,9 +67,7 @@ Map* MapBuilder::createMap(ofImage mapImage){
 			else if(currentPixel == pacman){
                 Player* PacMan = new Player(xPos,yPos,pixelMultiplier,pixelMultiplier, entityManager);
 				mapInCreation->setPlayer(PacMan);
-				// PowerupSpawner* Powerup = new PowerupSpawner(xPos, yPos,pixelMultiplier, pixelMultiplier, pacmanSpriteSheet, entityManager);
-				// mapInCreation->setPowerups(Powerup);
-				// DarthVader * SithLord = new DarthVader(xPos, yPos, pixelMultiplier, pixelMultiplier, Darth, entityManager);
+				
             }
 			
 			else if(currentPixel == ghostC){

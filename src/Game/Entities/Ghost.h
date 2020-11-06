@@ -35,7 +35,6 @@ class Ghost: public Entity{
         Animation *white;
         EntityManager* em;
         int speed = 4;
-        //bool isEatable = false;
         bool isDead;
 
         bool invisable = false;
@@ -52,19 +51,17 @@ class Ghost: public Entity{
 
         ofImage getBlueSkin(){return blueVulnerable;}
         ofImage getWhiteSkin(){return CyanVulnerable;}
-        //bool getIsEatable(){return this->isEatable;}
         void setIsEatable(bool eatable){isDead = eatable;}
         void checkGhostCollisions();
 
         void setInvisable(bool f){invisable = f;};
 
-        //void setisDead(bool vulnerable){isDead = vulnerable;}
         int randomDir;
 
 
         int deadTU =0, deadTD =0, deadTL = 0, deadTR = 0;
 
-        //ofSoundPlayer GhostsMovement;
+        
         
         
 

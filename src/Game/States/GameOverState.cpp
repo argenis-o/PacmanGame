@@ -8,17 +8,19 @@ GameOverState::GameOverState(){
 void GameOverState::tick(){
 	replayButton->tick();
 	if(replayButton->wasPressed()){
-		// setFinished(true);
 		setNextState("Game");
 		setFinished(true);
 	}
 }
 
 void GameOverState::render(){
+
     YouDied.load("images/YouDied.jpg");
     YouDied.draw(0,0,ofGetWidth(),ofGetHeight());
+	ofDrawBitmapString("Score: " + to_string(score), ofGetWidth()/2, 50);
+	ofDrawBitmapString("High Score: " + to_string(HighScore),ofGetWidth()/2,70);
     replayButton->render();
-    ofSetBackgroundColor(0, 0, 0);
+    ofSetBackgroundColor(255, 255, 255);
 }
 void GameOverState::keyPressed(int key){
 	
