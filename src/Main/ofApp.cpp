@@ -43,6 +43,7 @@ void ofApp::update(){
 				gameoverState->setScore(gameState->getScore());
 				gameoverState->setHighScore(gameState->getHighScore());
 				DarthVaderVoiceline = SoundEffects::soundManager("PacManSoundEffects/DarthVaderVoiceLine2.mp3");
+				DarthVaderVoiceline.setVolume(1);
 		 		currentState = gameoverState;
 			}
 
@@ -51,6 +52,7 @@ void ofApp::update(){
 				winningState->setScore(gameState->getScore());
 				winningState->setHighScore(gameState->getHighScore());
 				VictorySound = SoundEffects::soundManager("PacManSoundEffects/VictorySound.mp3");
+				VictorySound.setVolume(1);
 				currentState = winningState;
 			}
 			

@@ -16,9 +16,9 @@ void WinningState::tick(){
 
 void WinningState::render(){
     VictoryScreen.load("images/VictoryScreen.png");
+    VictoryScreen.draw(0,0,ofGetWidth(),ofGetHeight());
 	ofDrawBitmapString("Score: " + to_string(score), ofGetWidth()/2, 50);
 	ofDrawBitmapString("High Score: " + to_string(HighScore),ofGetWidth()/2,70);
-    VictoryScreen.draw(0,0,ofGetWidth(),ofGetHeight());
     replayButton->render();
     ofSetBackgroundColor(0, 0, 0);
 }

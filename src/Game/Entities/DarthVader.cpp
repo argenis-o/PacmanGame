@@ -17,7 +17,7 @@ DarthVader::DarthVader(int x,int y,int width,int height, ofImage sprite, EntityM
 void DarthVader::tick(){
     
      
-   if(timer < 1200){
+   if(timer < 3000){
        timer++;
    }
 
@@ -26,12 +26,13 @@ void DarthVader::tick(){
        timer = 0;
        
        
+       
    }
 
 }
 
 void DarthVader::render(){
-    if(timer < 1200){
+    if(timer < 3000){
         timer++;
     }
     else{
@@ -72,5 +73,6 @@ void DarthVader::PlayMusic(){
 
     DarthVaderMessage = SoundEffects::soundManager("PacManSoundEffects/DarhVaderVoiceLine.mp3");
     ImperialMarch = SoundEffects::soundManager("PacManSoundEffects/ImperialMarch.mp3");
+    
     
 }
