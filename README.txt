@@ -41,6 +41,12 @@ BUGS,FEATURES AND WHATS NEXT:
     out all lifes and trigger the GameOverState. For the Victory Screen, you have to finish the game. I recommend setting
     PacMan's speed to 4 to finish the game faster if you dont mind for the sound to be glitched when he eats dots.
 
+    Bug #3
+
+    We had a problem with GitHub in the sense that in a Push some binary, compiled and JSON files were pushed to the repository,
+    if any problems are given when compiling please just do a make clean and compile again and then it should work perfectly.
+    If not please contact us by email: sebastian.estrada@upr.edu and argenis.olivo@upr.edu
+
     WHATS NEXT:
 
         * the feature of making the Ghosts spawn as the same color that they died 
