@@ -8,7 +8,7 @@ Map::Map(EntityManager* em){
 
 void Map::tick(){
 	if(dotC){
-		dotCount = 0;
+		dotCount = 0; // keep the dots counted 
 		for(Entity* entity:entityManager->entities){
 			if(dynamic_cast<Dot*>(entity)){
 			dotCount++;
@@ -18,6 +18,7 @@ void Map::tick(){
 			}
 		}
 	}
+	
 	entityManager->tick();
 	player->tick();
 	ghost->tick();
@@ -36,7 +37,7 @@ void Map::render(){
 			if(player->ghostdie){ //if PacMan eats a Ghost, set the timer.
 				if(timer<150){
 					timer++;
-					DynamicGhost->setIsEatable(true);
+					DynamicGhost->setIsEatable(true); // tell the ghosts they are vulnerable
 
 				}
 			}
@@ -45,7 +46,7 @@ void Map::render(){
 					DynamicGhost->setIsEatable(false);
 				}
 		if(dynamic_cast<DarthVader*>(entity)){
-			DarthVader* DynamicVader = dynamic_cast<DarthVader*>(entity);
+			DarthVader* DynamicVader = dynamic_cast<DarthVader*>(entity); //Vader's abilities (work in progress)
 			if(DynamicVader->getForceChoke()){
 				if(chokeTimer<90){
 					chokeTimer++;

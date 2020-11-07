@@ -13,7 +13,7 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
     CyanVulnerable.cropFrom(sprite,616,64,16,16);
     this->name = name;
     switch(name){
-        case Blinky:
+        case Blinky: // each name has its own color 
             down.cropFrom(sprite, 552, 64, 16, 16);
             up.cropFrom(sprite, 520, 64, 16, 16);
             left.cropFrom(sprite, 488, 64, 16, 16);
@@ -90,7 +90,7 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
 
 
 
-void Ghost::tick(){
+void Ghost::tick(){ // For now, direction at collision is random.
     canMove = true;
     checkGhostCollisions();
     if(canMove){
@@ -125,7 +125,7 @@ void Ghost::tick(){
 
     else{
         if(facing == GHOSTUP){
-            randomDir = ofRandom(0,3);
+            randomDir = ofRandom(0,3); // choose a random number, each number represents a direction
             switch(randomDir){
                 case 0:
                     setFacing(GHOSTRIGHT);
@@ -203,7 +203,7 @@ void Ghost::render(){
     ofSetColor(256,256,256);
     if(!invisable){
         if(facing == GHOSTUP){
-            if(isDead){
+            if(isDead){ // animations for the ghosts when they are vulnerable
                 if(deadTU<30){
                     deadTU++;
                     blue->getCurrentFrame().draw(x,y,width,height);
@@ -223,7 +223,7 @@ void Ghost::render(){
         
         else if(facing == GHOSTDOWN){
             
-            if(isDead){
+            if(isDead){ 
                 if(deadTD<30){
                     deadTD++;
                     blue->getCurrentFrame().draw(x,y,width,height);

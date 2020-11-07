@@ -61,7 +61,7 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
 void Player::tick(){
     if(ghostdie){
         if(timer<150){
-            status = "InVulnerable";
+            status = "InVulnerable"; // this means that the ghosts are in their vulnerable state, they can be eaten 
             timer++;
         }
         else{
@@ -116,7 +116,7 @@ void Player::render(){
         walkRight->getCurrentFrame().draw(x, y, width, height);
     }
     
-    ofDrawBitmapString("Score: "+to_string(this->getScore()),  0, 35);
+    ofDrawBitmapString("Score: "+to_string(this->getScore()),  0, 35); // display this info on screen
     ofDrawBitmapString("Lives : ", 0, 65);
     ofDrawBitmapString("Status: "+status, 0, 120);
     
@@ -126,7 +126,7 @@ void Player::render(){
         gapX += 10;
     }
     
-    if (oneupScore == 225){
+    if (oneupScore == 225){ // gain an extra life 
         oneup();
         oneupScore = 0;
     }
@@ -137,7 +137,7 @@ void Player::keyPressed(int key){
     switch(key){
         case 'w':
             setFacing(UP);
-            setSpeed(2);
+            setSpeed(2); // default speed is 2 so that the sound works appropietly. Can be changed to 4
             break;
         case 's':
             setFacing(DOWN);
@@ -161,7 +161,7 @@ void Player::keyPressed(int key){
     }
 }
 
-void Player::keyReleased(int key){
+void Player::keyReleased(int key){ //TODO: Add more key options for the movement
     if(key == 'w' || key =='s' || key == 'a' || key == 'd'){
         setSpeed(0);
         //canMove = false;
@@ -204,27 +204,27 @@ void Player::checkCollisions(){
     
     for(Entity* entity:em->entities){
         if(collides(entity)){
-            if(dynamic_cast<Dot*>(entity)){
+            if(dynamic_cast<Dot*>(entity)){ //PacMan eats a normal dot
                 entity->remove = true;
                 PacManEatsDots = SoundEffects::soundManager("PacManSoundEffects/PacManEatsDots2.mp3");
                 score += 10;                
                 oneupScore += 1;
 
             }
-            else if(dynamic_cast<BigDot*>(entity)){
+            else if(dynamic_cast<BigDot*>(entity)){ //PacMan eats a Big Dot
                 entity->remove = true;
                 PacManEatsDots = SoundEffects::soundManager("PacManSoundEffects/PacManEatsDots2.mp3");
                 PacManEatsBigDot = SoundEffects::soundManager("PacManSoundEffects/PacManGhostsVulnerable.mp3");
                 score +=50;
                 oneupScore += 5;
-                ghostdie = true;
+                ghostdie = true; // Ghosts are vulnerable 
                 timer = 0;
             }
 
-            else if(dynamic_cast<Ghost*>(entity)){
+            else if(dynamic_cast<Ghost*>(entity)){ // PacMan can eat Ghosts 
                 if(ghostdie){
                     PacManEatsGhost = SoundEffects::soundManager("PacManSoundEffects/pacManEatsGhost.mp3");
-                    entity->remove = true;
+                    entity->remove = true; // remove the Ghosts from the map 
                     score += 200;
                 }
                 if(!ghostdie){
@@ -232,7 +232,7 @@ void Player::checkCollisions(){
                 }
                 
             }
-            else if(dynamic_cast<Powerups*>(entity)){
+            else if(dynamic_cast<Powerups*>(entity)){ // PacMan eats a fruit 
                 entity->remove = true;
                 score += 500;
             }

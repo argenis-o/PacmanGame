@@ -21,7 +21,7 @@ void GameState::tick() {
 	}
 	map->tick();
 
-	if(map->getHealth() == 0){  
+	if(map->getHealth() == 0){   // When PacMan dies with 0 lives, it resets the game back to the first map
 		setNextState("Replay");
 		setFinished(true);
 		map->setHealth();
@@ -30,9 +30,9 @@ void GameState::tick() {
 		
 	}
 
-	else if(map->getDotCount()==0 && map->getHealth() > 0){
+	else if(map->getDotCount()==0 && map->getHealth() > 0){ // if PacMan eats all the dots and has 1 life or more, change map
 		count++;
-		if(count>=2){
+		if(count>=2){ // if we get out of index, set the map back to the first one 
 			count = 0;
 		}
 		setNextState("PLAY AGAIN");

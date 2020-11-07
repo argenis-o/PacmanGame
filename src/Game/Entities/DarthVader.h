@@ -7,10 +7,10 @@
 class DarthVader:public Entity{ 
 
     private:
-        bool forceChoke=false;
-        bool feelThePowerOfTheDarkside=false;
-        //bool lackoFaith=false;
-        bool surprise = false;
+        bool forceChoke=false; // does not let the player move
+        bool feelThePowerOfTheDarkside=false; // makes the ghosts invisible
+        //bool lackoFaith=false; // speeds up the ghosts 
+        bool surprise = false; //activates Vader's activities 
     
         
 
@@ -26,9 +26,9 @@ class DarthVader:public Entity{
         // void setLackOfFaith(bool faith){lackoFaith = faith;}
         void tick();
         void render();
-        void PlayMusic();
+        void PlayMusic(); // method that plays the sounds
 
-        int timer = 0;
+        int timer = 0; // timer for the image and sound to work
         int ForceTimer = 0;
         int darkTimer = 0;
         int randomAttack;

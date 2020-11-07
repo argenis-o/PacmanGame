@@ -21,7 +21,7 @@ void EntityManager::tick(){
     }
 }
 
-void EntityManager::render(){
+void EntityManager::render(){ // draw the ghosts first and then all other entities
     for(Entity* entity: entities){
         if(dynamic_cast<Ghost*>(entity) == NULL){
             entity->render();

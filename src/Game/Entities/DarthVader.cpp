@@ -17,12 +17,12 @@ DarthVader::DarthVader(int x,int y,int width,int height, ofImage sprite, EntityM
 void DarthVader::tick(){
     
      
-   if(timer < 3000){
+   if(timer < 3000){ // this timer is for the music to play after the timer reaches aprox 3 minutes.
        timer++;
    }
 
    else{
-       PlayMusic();
+       PlayMusic(); 
        timer = 0;
        
        
@@ -32,7 +32,7 @@ void DarthVader::tick(){
 }
 
 void DarthVader::render(){
-    if(timer < 3000){
+    if(timer < 3000){ //draw Darth Vader after the timer reaches its goal, approx 3 minutes.
         timer++;
     }
     else{
@@ -41,11 +41,12 @@ void DarthVader::render(){
     
     }
     
-    if(surprise){
+    if(surprise){   
 
         Vader.draw(x,y,width,height);
     }
-    if(surprise){
+    
+    if(surprise){ // from this line onwards, we tried to make the abilities for Darth Vader, but we did not finished it
         if(ForceTimer < 360){
             ForceTimer++;
         }
@@ -62,7 +63,7 @@ void DarthVader::render(){
         else{
             darkTimer = 0;
             randomAttack = 2;
-             if(randomAttack == 2){feelThePowerOfTheDarkside = true;}
+             if(randomAttack == 2){feelThePowerOfTheDarkside = true;} // we plan to finish this on the future
         }
     }
 

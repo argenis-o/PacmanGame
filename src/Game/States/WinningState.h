@@ -4,7 +4,7 @@
 #include "Button.h"
 #include "GameState.h"
 
-
+// This state is for when PacMan wins
 class WinningState : public State {
 private:
 	ofImage VictoryScreen;

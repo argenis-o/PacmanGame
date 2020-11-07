@@ -12,7 +12,7 @@ class GhostSpawner: public Entity{
         void keyPressed(int);
         bool viewGhostCount();
         int randomColor;
-        int gCount = 0;
+        int gCount = 0; // counts how many ghosts are active on the map
         int timer = 0;
 
         

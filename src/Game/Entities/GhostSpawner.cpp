@@ -33,7 +33,7 @@ void GhostSpawner::tick(){
             timer++;
         }
         else{
-            Ghost* clyde = new Ghost(x,y,width,height,sprite,entityManager,Clyde);
+            Ghost* clyde = new Ghost(x,y,width,height,sprite,entityManager,Clyde); // if the Ghost is killed, spawn this default one **TODO: MAKE GHOST SPAWN THE COLOR THAT WAS EATEN
             entityManager->entities.push_back(clyde);
             timer = 0;
         }
@@ -41,7 +41,7 @@ void GhostSpawner::tick(){
 }
 
 void GhostSpawner::keyPressed(int key){
-    switch(key){
+    switch(key){ //spawn a random Ghost color witg the G key
         case 'g':
             randomColor = int(ofRandom(0,4));
             if(randomColor == 0){

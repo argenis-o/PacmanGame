@@ -31,9 +31,9 @@ void ofApp::update(){
 				currentState = menuState;
 			}
 			else if(currentState->getNextState() == "Game"){
-				GhostsMovement = SoundEffects::soundManager("PacManSoundEffects/PacManBackGround.mp3");
+				GhostsMovement = SoundEffects::soundManager("PacManSoundEffects/PacManBackGround.mp3"); // Start Sound
 				PacManStart = SoundEffects::soundManager("PacManSoundEffects/PacManBeginning.mp3");
-				GhostsMovement.setLoop(true);
+				GhostsMovement.setLoop(true); // makes the effect that the ghosts are moving
 				currentState = gameState;
 
 				
@@ -42,7 +42,7 @@ void ofApp::update(){
 				GhostsMovement.setPaused(true);
 				gameoverState->setScore(gameState->getScore());
 				gameoverState->setHighScore(gameState->getHighScore());
-				DarthVaderVoiceline = SoundEffects::soundManager("PacManSoundEffects/DarthVaderVoiceLine2.mp3");
+				DarthVaderVoiceline = SoundEffects::soundManager("PacManSoundEffects/DarthVaderVoiceLine2.mp3"); // Sound for when PacMan loses the game
 				DarthVaderVoiceline.setVolume(1);
 		 		currentState = gameoverState;
 			}
@@ -51,7 +51,7 @@ void ofApp::update(){
 				GhostsMovement.setPaused(true);
 				winningState->setScore(gameState->getScore());
 				winningState->setHighScore(gameState->getHighScore());
-				VictorySound = SoundEffects::soundManager("PacManSoundEffects/VictorySound.mp3");
+				VictorySound = SoundEffects::soundManager("PacManSoundEffects/VictorySound.mp3"); // Sound when PacMan wins 
 				VictorySound.setVolume(1);
 				currentState = winningState;
 			}
@@ -74,12 +74,6 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 	if (currentState != nullptr)
-		switch(key){
-			case 't':
-				currentState = winningState;
-				currentState->keyPressed(key);
-				
-		}
 		
 		currentState->keyPressed(key);
 

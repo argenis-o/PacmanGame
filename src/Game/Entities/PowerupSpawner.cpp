@@ -33,7 +33,7 @@ void PowerupSpawner::render(){
 
 void PowerupSpawner::keyPressed(int key){
     switch(key){
-        case 'c':
+        case 'c': // pressing the key "C" makes a fruit spawn 
             if(poweron){
                 Powerups * Cherry = new Powerups(x,y,width,height,pow,entityManager,CHERRY);
                 entityManager->entities.push_back(Cherry);

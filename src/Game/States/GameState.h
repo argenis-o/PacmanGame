@@ -23,7 +23,7 @@ class GameState: public State{
 		int getHighScore(){return HighS;}
 		int HighS;
 		int score;
-		ofImage newMaps[2];
+		ofImage newMaps[2]; // array that contains maps
 		
 	
 	private:

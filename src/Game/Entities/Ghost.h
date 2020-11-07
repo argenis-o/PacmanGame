@@ -5,7 +5,7 @@
 #include "ofSoundPlayer.h"
 
 
-enum GHOSTFACING {
+enum GHOSTFACING { //enum that contains the movement of the ghosts 
     GHOSTUP,
     GHOSTDOWN,
     GHOSTLEFT,
@@ -13,7 +13,7 @@ enum GHOSTFACING {
 };
 
 
-enum GHOSTNAMES{
+enum GHOSTNAMES{ //enum that contains the name of the ghosts, each name is an unique color
     Pinky,
     Blinky,
     Inky,
@@ -23,7 +23,7 @@ enum GHOSTNAMES{
 
 class Ghost: public Entity{
     private:
-        GHOSTFACING facing = GHOSTUP;
+        GHOSTFACING facing = GHOSTUP; //default facing
         GHOSTNAMES name;
         bool canMove;
         ofImage up, down, left, right, blueVulnerable, CyanVulnerable;
@@ -31,13 +31,13 @@ class Ghost: public Entity{
         Animation *walkDown;
         Animation *walkLeft;
         Animation *walkRight;
-        Animation *blue;
-        Animation *white;
+        Animation *blue; //animation for vulnerable
+        Animation *white; //animation for vulnerable
         EntityManager* em;
-        int speed = 4;
+        int speed = 4; // default speed
         bool isDead;
 
-        bool invisable = false;
+        bool invisable = false; // made for Vader
         
         
         
@@ -59,7 +59,7 @@ class Ghost: public Entity{
         int randomDir;
 
 
-        int deadTU =0, deadTD =0, deadTL = 0, deadTR = 0;
+        int deadTU =0, deadTD =0, deadTL = 0, deadTR = 0; // timers for the Vulnerability animations
 
         
         

@@ -6,7 +6,7 @@ Powerups::Powerups(int x, int y, int width, int height, ofImage spritesheet, Ent
     this->power = spritesheet;
     this->current = current;
     switch(current){
-        case CHERRY:
+        case CHERRY: // More powerups coming soon...
             cherry.cropFrom(spritesheet,489, 49,16,16);
     }
 }
